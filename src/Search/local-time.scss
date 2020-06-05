@@ -1,0 +1,10 @@
+.local-time {
+    width: 150px;
+    height: 35px;
+    text-align: center;
+    padding-top: 5px;
+    border-left: 1px solid black;
+    .time {
+       font-size: 20px; 
+    }
+}

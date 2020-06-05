@@ -1,0 +1,17 @@
+.main-menu {
+    width: 100%;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    .main-menu__button {
+        width: 33.1%;
+        height: 34px;
+        border: none;
+        background-color: transparent;
+        font-size: 20px;
+        outline: none;
+    }
+    .button_active {
+        color: white;
+        background-color: black;
+    }
+}

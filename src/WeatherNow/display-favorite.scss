@@ -1,0 +1,22 @@
+.display-favorite {
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    .display-favorite__city {
+        .display-favorite__active-city {
+            margin-left: 10px;
+            text-transform: capitalize;
+        }
+    }
+    .display-favorite__heart-img {
+        margin-right: 20px;
+        width: 45px;
+        height: 45px;
+    }
+    .heart-img_active {
+        background-image: url(./img/heart-white.svg);
+        background-repeat: no-repeat;
+        background-size: 40px;
+    }
+}

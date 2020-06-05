@@ -1,0 +1,26 @@
+.favorite-cities {
+    width: 300px;
+    height: 100%;
+    .favorite-cities__title {
+        height: 75px;
+        width: 298px;
+        border-bottom: 1px solid black;
+        text-align: center;
+        padding-top: 25px;
+    }
+    .favorite-cities__list {
+        height: 364px;
+        width: 298px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        padding-top: 10px;
+        .favorite-city {
+            margin-left: 10px;
+            height: 40px;
+            font-weight: 500;
+            font-size: 25px;
+            line-height: 40px;
+        }
+    }
+}
