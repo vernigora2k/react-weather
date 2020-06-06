@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react'
 import SearchForm from './Search/SearchForm'
 import LocalTime from './Search/LocalTime'
 import DisplayNow from './WeatherNow/DisplayNow'
@@ -7,14 +8,19 @@ import MainMenu from './Menu/MainMenu'
 import FavoriteCities from './FovoriteCities/FavoriteCities'
 
 function App() {
-    const favoriteActive = {favoriteName: '', favoriteActivated: true}
-
+    let [favoriteActive, setFavoriteActive] = useState({favoriteName: 'London', favoriteActivated: false})
+  
     function changeFavorite(response) {
         console.log('CHANGE FAVORITE ' + typeof(response))
         console.log(response)
-        if(response == 'clickOnHeart') {
-            favoriteActive.favoriteName = 'London'
-            console.log(favoriteActive.favoriteName)
+        if(response === 'clickOnHeart' && favoriteActive.favoriteActivated) {
+            setFavoriteActive(
+                {favoriteName: 'London', favoriteActivated: false}
+            )
+        } else {
+            setFavoriteActive(
+                {favoriteName: 'London', favoriteActivated: true}
+            )
         }
     }
 
@@ -32,7 +38,10 @@ function App() {
                 <div className='main-body__media flex'>
                     <div className='main-body__display flex'>
                         <DisplayNow></DisplayNow>
-                        <DisplayFavorite favoriteActive={favoriteActive} onChange={changeFavorite}></DisplayFavorite>
+                        <DisplayFavorite 
+                          favoriteActive={favoriteActive} 
+                          onChange={changeFavorite}>
+                        </DisplayFavorite>
                     </div>
                     <div className='main-body__menu'>
                         <MainMenu></MainMenu>

@@ -4,20 +4,21 @@ import './display-favorite.scss'
 function DisplayFavorite({ favoriteActive, onChange }) {
     const classes = []
 
-    // if(activeCity.isFavorite) {
-    //     classes.push('heart-img_active')
-    // }
-
+    if(favoriteActive.favoriteActivated) {
+        classes.push('display-favorite__heart-img heart-img_active')
+    } else {
+        classes.push('display-favorite__heart-img')
+    }
+    
     return (
         <div className='display-favorite flex'>
             <div className='display-favorite__city'>
                 <span className='display-favorite__active-city'>aktobe</span>
             </div>
             <div 
-              className='display-favorite__heart-img heart-img_active' 
+              className={classes} 
               onClick={() => {
                   onChange('clickOnHeart')
-                  console.log(favoriteActive)
                   }}
             >
             </div>
