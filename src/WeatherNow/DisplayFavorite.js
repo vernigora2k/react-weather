@@ -1,11 +1,11 @@
 import React from 'react'
 import './display-favorite.scss'
 
-function DisplayFavorite({ onChange }) {
+function DisplayFavorite({ favoriteActive, onChange }) {
     const classes = []
 
     // if(activeCity.isFavorite) {
-    //     classes.push('')
+    //     classes.push('heart-img_active')
     // }
 
     return (
@@ -15,7 +15,10 @@ function DisplayFavorite({ onChange }) {
             </div>
             <div 
               className='display-favorite__heart-img heart-img_active' 
-              onClick={() => onChange(classes)}
+              onClick={() => {
+                  onChange('clickOnHeart')
+                  console.log(favoriteActive)
+                  }}
             >
             </div>
         </div>

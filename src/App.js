@@ -7,10 +7,15 @@ import MainMenu from './Menu/MainMenu'
 import FavoriteCities from './FovoriteCities/FavoriteCities'
 
 function App() {
-    // const favoriteActive = {favoriteName: '', favoriteActivated: true}
+    const favoriteActive = {favoriteName: '', favoriteActivated: true}
 
-    function changeFavorite() {
-        console.log('CHANGE FAVORITE')
+    function changeFavorite(response) {
+        console.log('CHANGE FAVORITE ' + typeof(response))
+        console.log(response)
+        if(response == 'clickOnHeart') {
+            favoriteActive.favoriteName = 'London'
+            console.log(favoriteActive.favoriteName)
+        }
     }
 
     return (
@@ -27,7 +32,7 @@ function App() {
                 <div className='main-body__media flex'>
                     <div className='main-body__display flex'>
                         <DisplayNow></DisplayNow>
-                        <DisplayFavorite onChange={changeFavorite}></DisplayFavorite>
+                        <DisplayFavorite favoriteActive={favoriteActive} onChange={changeFavorite}></DisplayFavorite>
                     </div>
                     <div className='main-body__menu'>
                         <MainMenu></MainMenu>
