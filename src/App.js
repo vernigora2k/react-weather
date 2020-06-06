@@ -7,6 +7,12 @@ import MainMenu from './Menu/MainMenu'
 import FavoriteCities from './FovoriteCities/FavoriteCities'
 
 function App() {
+    // const favoriteActive = {favoriteName: '', favoriteActivated: true}
+
+    function changeFavorite() {
+        console.log('CHANGE FAVORITE')
+    }
+
     return (
         <div className='wrapper'>
             <div className='search-body flex'>
@@ -21,7 +27,7 @@ function App() {
                 <div className='main-body__media flex'>
                     <div className='main-body__display flex'>
                         <DisplayNow></DisplayNow>
-                        <DisplayFavorite></DisplayFavorite>
+                        <DisplayFavorite onChange={changeFavorite}></DisplayFavorite>
                     </div>
                     <div className='main-body__menu'>
                         <MainMenu></MainMenu>

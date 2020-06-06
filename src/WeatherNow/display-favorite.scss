@@ -13,9 +13,12 @@
         margin-right: 20px;
         width: 45px;
         height: 45px;
+        background-image: url(./img/heart-white.svg);
+        background-repeat: no-repeat;
+        background-size: 40px;
     }
     .heart-img_active {
-        background-image: url(./img/heart-white.svg);
+        background-image: url(./img/heart-black.svg);
         background-repeat: no-repeat;
         background-size: 40px;
     }
