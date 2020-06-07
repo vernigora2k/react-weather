@@ -2,10 +2,8 @@ import React from 'react'
 import './favorite-cities.scss'
 
 // export default function FavoriteCities({ favoriteActive }) {
-//     console.log(favoriteActive)
 //     const myRef = React.createRef()
 //     console.log(myRef)
-//     console.log(myRef.current)
 
 //     return (
 //         <div className='favorite-cities'>
@@ -24,6 +22,7 @@ export default class FavoriteCities extends React.Component {
     constructor(props) {
         super(props)
         this.myRef = React.createRef();
+        console.log(this.props);
     }
 
     render() {
