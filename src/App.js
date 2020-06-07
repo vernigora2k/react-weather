@@ -48,7 +48,9 @@ function App() {
                     </div>
                 </div>
                 <div className='main-body__favorite-cities'>
-                    <FavoriteCities></FavoriteCities>
+                    <FavoriteCities 
+                      favoriteActive={favoriteActive}>
+                    </FavoriteCities>
                 </div>
             </div>
         </div>
