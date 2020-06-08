@@ -10,17 +10,24 @@ import FavoriteCities from './FovoriteCities/FavoriteCities'
 function App() {
     let [favoriteName, setFavoriteName] = useState('lilu')
     let [favoriteNameActive, setFavoriteNameActive] = useState(false)
-    let [searchFormValue, setSearchFormValue] = useState('Aktobe')
+    let [searchFormValue, setSearchFormValue] = useState('ЕAktobe')
 
     function changeFavoriteNameActive() {
         setFavoriteNameActive((data) => !(data)) 
+    }
+
+    function changeInputValue(response) {
+        console.log(response)
     }
 
     return (
         <div className='wrapper'>
             <div className='search-body flex'>
                 <div className='search-body__search-form'>
-                    <SearchForm></SearchForm>
+                    <SearchForm
+                      searchFormValue={searchFormValue}
+                      changeInput={changeInputValue}>
+                    </SearchForm>
                 </div>
                 <div className='search-body__local-time'>
                     <LocalTime></LocalTime>
