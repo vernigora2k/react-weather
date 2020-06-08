@@ -8,17 +8,22 @@ import MainMenu from './Menu/MainMenu'
 import FavoriteCities from './FovoriteCities/FavoriteCities'
 
 function App() {
-    let [favoriteName, setFavoriteName] = useState('lilu')
-    let [favoriteNameActive, setFavoriteNameActive] = useState(false)
     let [searchFormValue, setSearchFormValue] = useState('Aktobe')
+    let [favoriteName, setFavoriteName] = useState(searchFormValue)
+    let [favoriteNameActive, setFavoriteNameActive] = useState(false)
 
     function changeFavoriteNameActive() {
         setFavoriteNameActive((data) => !(data)) 
     }
 
+    // function changeFavoriteName() {
+    //     setFavoriteName(searchFormValue)
+    // }
+
     function changeInputValue(response) {
         console.log(response)
         setSearchFormValue(response)
+        setFavoriteName(searchFormValue)
     }
 
     return (
@@ -38,7 +43,8 @@ function App() {
                 <div className='main-body__media flex'>
                     <div className='main-body__display flex'>
                         <DisplayNow></DisplayNow>
-                        <DisplayFavorite 
+                        <DisplayFavorite
+                          favoriteName={favoriteName} 
                           favoriteNameActive={favoriteNameActive} 
                           onChange={changeFavoriteNameActive}>
                         </DisplayFavorite>

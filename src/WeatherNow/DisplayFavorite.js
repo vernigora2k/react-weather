@@ -1,7 +1,7 @@
 import React from 'react'
 import './display-favorite.scss'
 
-function DisplayFavorite({ favoriteNameActive, onChange }) {
+function DisplayFavorite({ favoriteName, favoriteNameActive, onChange }) {
     const classes = []
 
     if(favoriteNameActive) {
@@ -13,7 +13,7 @@ function DisplayFavorite({ favoriteNameActive, onChange }) {
     return (
         <div className='display-favorite flex'>
             <div className='display-favorite__city'>
-                <span className='display-favorite__active-city'>aktobe</span>
+                <span className='display-favorite__active-city'>{favoriteName}</span>
             </div>
             <div 
               className={classes} 

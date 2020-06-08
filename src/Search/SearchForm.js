@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './search.scss'
 
 export default function SearchForm({ searchFormValue, changeInput }) {
+    let [formValue, setFormValue] = useState(searchFormValue)
+
     function handleChange(event) {
-        changeInput(event.target.value)
+        setFormValue(event.target.value)
     }
     
     function handleSubmit(event) {
         event.preventDefault()
+        changeInput(formValue)
     }
 
     return (
@@ -16,7 +19,7 @@ export default function SearchForm({ searchFormValue, changeInput }) {
               className='search-form__input' 
               type='text'
               placeholder='Aktobe' 
-              value={searchFormValue}
+              value={formValue}
               onChange={handleChange}>
             </input>
             <input 
