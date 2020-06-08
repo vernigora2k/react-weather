@@ -1,10 +1,10 @@
 import React from 'react'
 import './display-favorite.scss'
 
-function DisplayFavorite({ favoriteActive, onChange }) {
+function DisplayFavorite({ favoriteNameActive, onChange }) {
     const classes = []
 
-    if(favoriteActive.favoriteActivated) {
+    if(favoriteNameActive) {
         classes.push('display-favorite__heart-img heart-img_active')
     } else {
         classes.push('display-favorite__heart-img')
@@ -18,7 +18,7 @@ function DisplayFavorite({ favoriteActive, onChange }) {
             <div 
               className={classes} 
               onClick={() => {
-                  onChange('clickOnHeart')
+                  onChange()
                   }}
             >
             </div>

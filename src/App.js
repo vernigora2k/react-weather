@@ -8,20 +8,11 @@ import MainMenu from './Menu/MainMenu'
 import FavoriteCities from './FovoriteCities/FavoriteCities'
 
 function App() {
-    let [favoriteActive, setFavoriteActive] = useState({favoriteName: 'London', favoriteActivated: false})
-  
-    function changeFavorite(response) {
-        console.log('CHANGE FAVORITE ' + typeof(response))
-        console.log(response)
-        if(response === 'clickOnHeart' && favoriteActive.favoriteActivated) {
-            setFavoriteActive(
-                {favoriteName: 'London', favoriteActivated: false}
-            )
-        } else {
-            setFavoriteActive(
-                {favoriteName: 'London', favoriteActivated: true}
-            )
-        }
+    let [favoriteName, setFavoriteName] = useState('Lilu')
+    let [favoriteNameActive, setFavoriteNameActive] = useState(false)
+
+    function changeFavoriteNameActive() {
+        setFavoriteNameActive((data) => !(data)) 
     }
 
     return (
@@ -39,8 +30,8 @@ function App() {
                     <div className='main-body__display flex'>
                         <DisplayNow></DisplayNow>
                         <DisplayFavorite 
-                          favoriteActive={favoriteActive} 
-                          onChange={changeFavorite}>
+                          favoriteNameActive={favoriteNameActive} 
+                          onChange={changeFavoriteNameActive}>
                         </DisplayFavorite>
                     </div>
                     <div className='main-body__menu'>
@@ -49,7 +40,7 @@ function App() {
                 </div>
                 <div className='main-body__favorite-cities'>
                     <FavoriteCities 
-                      favoriteActive={favoriteActive}>
+                      favoriteName={favoriteName}>
                     </FavoriteCities>
                 </div>
             </div>
