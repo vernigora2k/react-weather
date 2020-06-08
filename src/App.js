@@ -10,7 +10,7 @@ import FavoriteCities from './FovoriteCities/FavoriteCities'
 function App() {
     let [favoriteName, setFavoriteName] = useState('lilu')
     let [favoriteNameActive, setFavoriteNameActive] = useState(false)
-    let [searchFormValue, setSearchFormValue] = useState('ЕAktobe')
+    let [searchFormValue, setSearchFormValue] = useState('Aktobe')
 
     function changeFavoriteNameActive() {
         setFavoriteNameActive((data) => !(data)) 

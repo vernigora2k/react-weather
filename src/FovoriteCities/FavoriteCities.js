@@ -3,9 +3,8 @@ import './favorite-cities.scss'
 
 export default function FavoriteCities({ favoriteName, favoriteNameActive }) {
     const myRef = React.createRef()
-    console.log(myRef)
     let city = ''
-    
+
     if(favoriteNameActive) {
         city = favoriteName
     } else {
