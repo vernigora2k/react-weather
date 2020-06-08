@@ -18,6 +18,7 @@ function App() {
 
     function changeInputValue(response) {
         console.log(response)
+        setSearchFormValue(response)
     }
 
     return (

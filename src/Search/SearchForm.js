@@ -2,17 +2,22 @@ import React from 'react'
 import './search.scss'
 
 export default function SearchForm({ searchFormValue, changeInput }) {
-    
-    
+    let value = '';
     function handleChange(event) {
-        //console.log(this.input.current.value)
-        event.preventDefault()
-        changeInput('syka')
         console.log(event.target.value)
+        value += event.target.value
+        handleSubmit(value)
+    }
+    
+    function handleSubmit(value) {
+        //console.log(this.input.current.value)
+        // event.preventDefault()
+        changeInput(value)
+        // console.log(event.target.value)
     }
 
     return (
-        <form className='search-form'>
+        <form className='search-form' onSubmit={handleSubmit}>
             <input 
               className='search-form__input' 
               type='text'
