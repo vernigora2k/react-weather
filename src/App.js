@@ -23,7 +23,6 @@ function App() {
     function changeInputValue(response) {
         console.log(response)
         setSearchFormValue(response)
-        setFavoriteName(searchFormValue)
     }
 
     return (
@@ -44,7 +43,7 @@ function App() {
                     <div className='main-body__display flex'>
                         <DisplayNow></DisplayNow>
                         <DisplayFavorite
-                          favoriteName={favoriteName} 
+                          searchFormValue={searchFormValue} 
                           favoriteNameActive={favoriteNameActive} 
                           onChange={changeFavoriteNameActive}>
                         </DisplayFavorite>
