@@ -1,11 +1,16 @@
 import React from 'react'
 import './favorite-cities.scss'
 
-export default function FavoriteCities({ favoriteName }) {
+export default function FavoriteCities({ favoriteName, favoriteNameActive }) {
     const myRef = React.createRef()
     console.log(myRef)
-    console.log(favoriteName)
+    let city = ''
     
+    if(favoriteNameActive) {
+        city = favoriteName
+    } else {
+        city = ''
+    }
 
     return (
         <div className='favorite-cities'>
@@ -13,7 +18,7 @@ export default function FavoriteCities({ favoriteName }) {
                 <span>Added Locations:</span>
             </div>
             <div className='favorite-cities__list flex'>
-                <div className='favorite-city' ref={myRef}><span>{favoriteName}</span></div>
+                <div className='favorite-city' ref={myRef}><span>{city}</span></div>
             </div>
         </div>
     )

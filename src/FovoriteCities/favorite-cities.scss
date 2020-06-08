@@ -16,6 +16,7 @@
         overflow-y: scroll;
         padding-top: 10px;
         .favorite-city {
+            text-transform: capitalize;
             margin-left: 10px;
             height: 40px;
             font-weight: 500;

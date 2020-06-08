@@ -8,8 +8,9 @@ import MainMenu from './Menu/MainMenu'
 import FavoriteCities from './FovoriteCities/FavoriteCities'
 
 function App() {
-    let [favoriteName, setFavoriteName] = useState('Lilu')
+    let [favoriteName, setFavoriteName] = useState('lilu')
     let [favoriteNameActive, setFavoriteNameActive] = useState(false)
+    let [searchFormValue, setSearchFormValue] = useState('Aktobe')
 
     function changeFavoriteNameActive() {
         setFavoriteNameActive((data) => !(data)) 
@@ -40,7 +41,8 @@ function App() {
                 </div>
                 <div className='main-body__favorite-cities'>
                     <FavoriteCities 
-                      favoriteName={favoriteName}>
+                      favoriteName={favoriteName}
+                      favoriteNameActive={favoriteNameActive}>
                     </FavoriteCities>
                 </div>
             </div>
