@@ -12,8 +12,9 @@ function App() {
     let [favoriteName, setFavoriteName] = useState(searchFormValue)
     let [favoriteNameActive, setFavoriteNameActive] = useState(false)
 
-    function changeFavoriteNameActive() {
-        setFavoriteNameActive((data) => !(data)) 
+    function changeFavorite() {
+        setFavoriteNameActive((data) => !(data))
+        setFavoriteName(searchFormValue) 
     }
 
     // function changeFavoriteName() {
@@ -45,7 +46,7 @@ function App() {
                         <DisplayFavorite
                           searchFormValue={searchFormValue} 
                           favoriteNameActive={favoriteNameActive} 
-                          onChange={changeFavoriteNameActive}>
+                          onChange={changeFavorite}>
                         </DisplayFavorite>
                     </div>
                     <div className='main-body__menu'>
