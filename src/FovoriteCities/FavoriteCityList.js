@@ -5,6 +5,8 @@ import FavoriteCity from './FavoriteCity'
 export default function FavoriteCityList({ favoriteName, favoriteNameActive }) {
     let city = ''
 
+    console.log(favoriteNameActive)
+    
     if(favoriteNameActive) {
         city = favoriteName
     } else {
