@@ -17,7 +17,7 @@ function App() {
         setFavoriteNameActive((data) => !(data))
         setFavoriteName(searchFormValue) 
         if(!favoriteNameActive) {
-            setCitiesList([...citiesList, favoriteName])
+            setCitiesList([...citiesList, searchFormValue])
             console.log(citiesList)
         } 
     }
