@@ -19,7 +19,10 @@ function App() {
         if(!favoriteNameActive) {
             setCitiesList([...citiesList, searchFormValue])
             console.log(citiesList)
-        } 
+        } else {
+            console.log(citiesList)
+            setCitiesList(citiesList.filter(city => city !== searchFormValue))
+        }
     }
 
     // function changeFavoriteName() {
