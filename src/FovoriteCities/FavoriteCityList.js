@@ -1,17 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './favorite-city-list.scss'
 import FavoriteCity from './FavoriteCity'
 
-export default function FavoriteCityList({ favoriteName, favoriteNameActive }) {
-    let city = ''
+export default function FavoriteCityList({ favoriteName, favoriteNameActive, citiesList }) {
+    const myRef = React.createRef()
+    // let city = ''
 
-    console.log(favoriteNameActive)
-    
-    if(favoriteNameActive) {
-        city = favoriteName
-    } else {
-        city = ''
-    }
+    // if(favoriteNameActive) {
+    //     city = favoriteName
+    //     //setCitiesList(...citiesList, favoriteName)
+    //     //console.log(citiesList)
+    // } else {
+    //     city = ''
+    // }
+    //////<FavoriteCity city={city}></FavoriteCity>
 
     return (
         <div className='favorite-cities'>
@@ -19,7 +21,10 @@ export default function FavoriteCityList({ favoriteName, favoriteNameActive }) {
                 <span>Added Locations:</span>
             </div>
             <div className='favorite-cities__list flex'>
-                <FavoriteCity city={city}></FavoriteCity>
+                {citiesList.map((city,i) => {
+                    console.log(city)
+                    return <FavoriteCity city={city} key={i}></FavoriteCity>
+                })}
             </div>
         </div>
     )
