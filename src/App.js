@@ -5,7 +5,7 @@ import LocalTime from './Search/LocalTime'
 import DisplayNow from './WeatherNow/DisplayNow'
 import DisplayFavorite from './WeatherNow/DisplayFavorite'
 import MainMenu from './Menu/MainMenu'
-import FavoriteCities from './FovoriteCities/FavoriteCities'
+import FavoriteCities from './FovoriteCities/FavoriteCityList'
 
 function App() {
     let [searchFormValue, setSearchFormValue] = useState('Aktobe')
