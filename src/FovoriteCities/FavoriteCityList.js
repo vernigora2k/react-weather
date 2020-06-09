@@ -4,16 +4,6 @@ import FavoriteCity from './FavoriteCity'
 
 export default function FavoriteCityList({ favoriteName, favoriteNameActive, citiesList }) {
     const myRef = React.createRef()
-    // let city = ''
-
-    // if(favoriteNameActive) {
-    //     city = favoriteName
-    //     //setCitiesList(...citiesList, favoriteName)
-    //     //console.log(citiesList)
-    // } else {
-    //     city = ''
-    // }
-    //////<FavoriteCity city={city}></FavoriteCity>
 
     return (
         <div className='favorite-cities'>
