@@ -21,7 +21,7 @@ function App() {
     }
 
     function addRemoveFavoriteCity() {
-        let capitalizedSearchValue = searchFormValue.charAt(0).toUpperCase() + searchFormValue.slice(1)
+        let capitalizedSearchValue = getCapitalize(searchFormValue)
         if(!favoriteNameActive) {
             setCitiesList([...citiesList, capitalizedSearchValue])
         } else {
@@ -36,13 +36,17 @@ function App() {
 
     
     function checkCityInList(inputValue) {
-        let capitalizeInputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1)
+        let capitalizeInputValue = getCapitalize(inputValue)
         let isFavoriteCityExist = citiesList.includes(capitalizeInputValue)
         if(isFavoriteCityExist) {
             setFavoriteNameActive(true)
         } else {
             setFavoriteNameActive(false)
         }
+    }
+
+    function getCapitalize(value) {
+        return value.charAt(0).toUpperCase() + value.slice(1)
     }
 
     return (
