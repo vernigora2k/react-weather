@@ -33,11 +33,11 @@ function App() {
     function changeInputValue(response) {
         console.log('changeInputValue  response'+response)
         setSearchFormValue(response)
-        checkCityInList()
+        checkCityInList(response)
     }
 
-    function checkCityInList() {
-        let isFavoriteCityExist = citiesList.includes(searchFormValue.charAt(0).toUpperCase() + searchFormValue.slice(1))
+    function checkCityInList(inputValue) {
+        let isFavoriteCityExist = citiesList.includes(inputValue)
         console.log(isFavoriteCityExist)
         if(isFavoriteCityExist) {
             setFavoriteNameActive(true)
