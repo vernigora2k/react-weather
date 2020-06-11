@@ -24,30 +24,26 @@ function App() {
         let capitalizedSearchValue = searchFormValue.charAt(0).toUpperCase() + searchFormValue.slice(1)
         if(!favoriteNameActive) {
             setCitiesList([...citiesList, capitalizedSearchValue])
-            // console.log(citiesList)
         } else {
-            console.log(citiesList)
             setCitiesList(citiesList.filter(city => city !== capitalizedSearchValue))
         }
     }
 
     function changeInputValue(response) {
-        console.log('changeInputValue  response'+response)
         setSearchFormValue(response)
         checkCityInList(response)
     }
 
     
     function checkCityInList(inputValue) {
-        console.log(inputValue)
-        
         let capitalizeInputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1)
-        console.log(capitalizeInputValue)
         let isFavoriteCityExist = citiesList.includes(capitalizeInputValue)
-        console.log(isFavoriteCityExist)
         if(isFavoriteCityExist) {
             setFavoriteNameActive(true)
-            console.log('setFavoriteNameactive = true')
+            console.log('if')
+        } else {
+            console.log('todo')
+            setFavoriteNameActive(false)
         }
     }
 
