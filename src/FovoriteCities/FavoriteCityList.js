@@ -12,7 +12,6 @@ export default function FavoriteCityList({ favoriteName, favoriteNameActive, cit
             </div>
             <div className='favorite-cities__list flex'>
                 {citiesList.map((city,i) => {
-                    console.log(city)
                     return <FavoriteCity city={city} key={i}></FavoriteCity>
                 })}
             </div>

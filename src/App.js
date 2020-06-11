@@ -40,9 +40,7 @@ function App() {
         let isFavoriteCityExist = citiesList.includes(capitalizeInputValue)
         if(isFavoriteCityExist) {
             setFavoriteNameActive(true)
-            console.log('if')
         } else {
-            console.log('todo')
             setFavoriteNameActive(false)
         }
     }
