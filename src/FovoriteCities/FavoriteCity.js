@@ -1,9 +1,8 @@
 import React from 'react'
 
 export default function FavoriteCity({ city }) {
-    if(!!!city) {
-        return null
-    }
+    
+    console.log(city)
 
     return (
         <div 

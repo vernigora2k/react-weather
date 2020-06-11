@@ -8,10 +8,11 @@ import MainMenu from './Menu/MainMenu'
 import FavoriteCityList from './FovoriteCities/FavoriteCityList'
 
 function App() {
+    let set = new Set()
     let [searchFormValue, setSearchFormValue] = useState('Aktobe')
     let [favoriteName, setFavoriteName] = useState(searchFormValue)
     let [favoriteNameActive, setFavoriteNameActive] = useState(false)
-    let [citiesList, setCitiesList] = useState(['London', 'Isakil'])
+    let [citiesList, setCitiesList] = useState(set)
 
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
@@ -23,9 +24,11 @@ function App() {
     function addRemoveFavoriteCity() {
         let capitalizedSearchValue = getCapitalize(searchFormValue)
         if(!favoriteNameActive) {
-            setCitiesList([...citiesList, capitalizedSearchValue])
+            setCitiesList(citiesList.add(capitalizedSearchValue))
+            console.log(citiesList)
         } else {
-            setCitiesList(citiesList.filter(city => city !== capitalizedSearchValue))
+            setCitiesList(citiesList.delete(capitalizedSearchValue))
+            console.log(citiesList)
         }
     }
 
@@ -37,7 +40,7 @@ function App() {
     
     function checkCityInList(inputValue) {
         let capitalizeInputValue = getCapitalize(inputValue)
-        let isFavoriteCityExist = citiesList.includes(capitalizeInputValue)
+        let isFavoriteCityExist = citiesList.has(capitalizeInputValue)
         if(isFavoriteCityExist) {
             setFavoriteNameActive(true)
         } else {
