@@ -36,6 +36,7 @@ function App() {
         checkCityInList(response)
     }
 
+    
     function checkCityInList(inputValue) {
         let isFavoriteCityExist = citiesList.includes(inputValue)
         console.log(isFavoriteCityExist)
