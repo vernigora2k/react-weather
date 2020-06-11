@@ -11,7 +11,7 @@ function App() {
     let [searchFormValue, setSearchFormValue] = useState('Aktobe')
     let [favoriteName, setFavoriteName] = useState(searchFormValue)
     let [favoriteNameActive, setFavoriteNameActive] = useState(false)
-    let [citiesList, setCitiesList] = useState(['London', 'isakil'])
+    let [citiesList, setCitiesList] = useState(['London', 'Isakil'])
 
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
@@ -21,12 +21,13 @@ function App() {
     }
 
     function addRemoveFavoriteCity() {
+        let capitalizedSearchValue = searchFormValue.charAt(0).toUpperCase() + searchFormValue.slice(1)
         if(!favoriteNameActive) {
-            setCitiesList([...citiesList, searchFormValue])
+            setCitiesList([...citiesList, capitalizedSearchValue])
             // console.log(citiesList)
         } else {
             console.log(citiesList)
-            setCitiesList(citiesList.filter(city => city !== searchFormValue))
+            setCitiesList(citiesList.filter(city => city !== capitalizedSearchValue))
         }
     }
 
@@ -38,7 +39,11 @@ function App() {
 
     
     function checkCityInList(inputValue) {
-        let isFavoriteCityExist = citiesList.includes(inputValue)
+        console.log(inputValue)
+        
+        let capitalizeInputValue = inputValue.charAt(0).toUpperCase() + inputValue.slice(1)
+        console.log(capitalizeInputValue)
+        let isFavoriteCityExist = citiesList.includes(capitalizeInputValue)
         console.log(isFavoriteCityExist)
         if(isFavoriteCityExist) {
             setFavoriteNameActive(true)
