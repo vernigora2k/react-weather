@@ -17,12 +17,13 @@ function App() {
         setFavoriteNameActive((data) => !(data))
         setFavoriteName(searchFormValue) 
         addRemoveFavoriteCity()
+        
     }
 
     function addRemoveFavoriteCity() {
         if(!favoriteNameActive) {
             setCitiesList([...citiesList, searchFormValue])
-            console.log(citiesList)
+            // console.log(citiesList)
         } else {
             console.log(citiesList)
             setCitiesList(citiesList.filter(city => city !== searchFormValue))
@@ -30,16 +31,17 @@ function App() {
     }
 
     function changeInputValue(response) {
-        console.log(response)
+        console.log('changeInputValue  response'+response)
         setSearchFormValue(response)
         checkCityInList()
     }
 
     function checkCityInList() {
-        let isFavoriteCityExist = citiesList.includes(searchFormValue)
+        let isFavoriteCityExist = citiesList.includes(searchFormValue.charAt(0).toUpperCase() + searchFormValue.slice(1))
         console.log(isFavoriteCityExist)
         if(isFavoriteCityExist) {
             setFavoriteNameActive(true)
+            console.log('setFavoriteNameactive = true')
         }
     }
 
