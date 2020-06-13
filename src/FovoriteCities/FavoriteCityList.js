@@ -4,8 +4,11 @@ import FavoriteCity from './FavoriteCity'
 
 export default function FavoriteCityList({ citiesList }) {
     
-    console.log('this is favoriteCityList.js')
-
+    console.log(!![...citiesList].length)
+    if (!!![...citiesList].length) {
+        citiesList = ['']
+        console.log('false')
+    }
     return (
         <div className='favorite-cities'>
             <div className='favorite-cities__title'>
