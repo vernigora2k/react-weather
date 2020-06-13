@@ -12,7 +12,7 @@ export default function FavoriteCityList({ citiesList }) {
                 <span>Added Locations:</span>
             </div>
             <div className='favorite-cities__list flex'>
-                {citiesList.forEach((city,i) => {
+                {[...citiesList].map((city,i) => {
                     return <FavoriteCity city={city} key={i}></FavoriteCity>
                 })}
             </div>
