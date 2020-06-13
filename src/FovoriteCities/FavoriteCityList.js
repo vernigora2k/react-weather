@@ -4,11 +4,11 @@ import FavoriteCity from './FavoriteCity'
 
 export default function FavoriteCityList({ citiesList }) {
     console.log('I am a favoriteCity inner))')
-    console.log(!!citiesList.size)
-    if (!citiesList.size) {
-        //citiesList = ['']
-        console.log('false')
-    }
+    console.log(citiesList)
+    // if (!citiesList.size) {
+    //     //citiesList = ['']
+    //     console.log('false')
+    // }
 
     // function FavoriteCity() {
     //     if (citiesList.size) {
@@ -30,12 +30,11 @@ export default function FavoriteCityList({ citiesList }) {
                     return <FavoriteCity city={city} key={i}></FavoriteCity>
                 })} */}
 
-                {isCityListEmpty ? '' :
+                {isCityListEmpty ? undefined :
                     ([...citiesList].map((city,i) => {
                         return <FavoriteCity city={city} key={i}></FavoriteCity>
                     }))
                 }
-                
             </div>
         </div>
     )
