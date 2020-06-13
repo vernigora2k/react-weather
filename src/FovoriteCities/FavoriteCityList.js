@@ -4,6 +4,8 @@ import FavoriteCity from './FavoriteCity'
 
 export default function FavoriteCityList({ citiesList }) {
     
+    console.log('this is favoriteCityList.js')
+
     return (
         <div className='favorite-cities'>
             <div className='favorite-cities__title'>

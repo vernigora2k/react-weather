@@ -1,7 +1,7 @@
 import React from 'react'
-import './display-favorite.scss'
+import './favorite-city-menu.scss'
 
-function DisplayFavorite({ searchFormValue, favoriteNameActive, onChange }) {
+function FavoriteCityMenu({ searchFormValue, favoriteNameActive, onChange }) {
     const classes = []
 
     if(favoriteNameActive) {
@@ -30,4 +30,4 @@ function DisplayFavorite({ searchFormValue, favoriteNameActive, onChange }) {
     )
 }
 
-export default DisplayFavorite
+export default FavoriteCityMenu

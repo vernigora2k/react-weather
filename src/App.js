@@ -2,8 +2,8 @@ import React from 'react'
 import { useState } from 'react'
 import SearchForm from './Search/SearchForm'
 import LocalTime from './Search/LocalTime'
-import DisplayNow from './WeatherNow/DisplayNow'
-import DisplayFavorite from './WeatherNow/DisplayFavorite'
+import Weather from './WeatherNow/Weather'
+import FavoriteCityMenu from './WeatherNow/FavoriteCityMenu'
 import MainMenu from './Menu/MainMenu'
 import FavoriteCityList from './FovoriteCities/FavoriteCityList'
 
@@ -68,12 +68,12 @@ function App() {
             <div className='main-body flex'>
                 <div className='main-body__media flex'>
                     <div className='main-body__display flex'>
-                        <DisplayNow></DisplayNow>
-                        <DisplayFavorite
+                        <Weather></Weather>
+                        <FavoriteCityMenu
                           searchFormValue={searchFormValue} 
                           favoriteNameActive={favoriteNameActive} 
                           onChange={changeFavorite}>
-                        </DisplayFavorite>
+                        </FavoriteCityMenu>
                     </div>
                     <div className='main-body__menu'>
                         <MainMenu></MainMenu>
