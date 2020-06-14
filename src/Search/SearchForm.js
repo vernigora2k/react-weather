@@ -13,7 +13,7 @@ export default function SearchForm({ searchFormValue, changeInput }) {
         if (!formValue) {
             return
         }
-        changeInput(formValue)
+        changeInput(formValue.toLowerCase())
     }
 
     return (
