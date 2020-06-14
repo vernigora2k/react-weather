@@ -23,14 +23,10 @@ function App() {
 
     function addRemoveFavoriteCity() { 
         if(!favoriteNameActive) {
-            console.log(citiesList)
             setCitiesList(citiesList.add(searchFormValue.toLowerCase()))
-            console.log(citiesList)
         } else {
-            console.log(citiesList)
             citiesList.delete(searchFormValue)
             setCitiesList(citiesList)
-            console.log(citiesList)
         }
     }
 
