@@ -10,6 +10,9 @@ export default function SearchForm({ searchFormValue, changeInput }) {
     
     function handleSubmit(event) {
         event.preventDefault()
+        if (!formValue) {
+            return
+        }
         changeInput(formValue)
     }
 
