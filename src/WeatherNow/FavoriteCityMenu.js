@@ -2,12 +2,12 @@ import React from 'react'
 import './favorite-city-menu.scss'
 
 function FavoriteCityMenu({ searchFormValue, favoriteNameActive, onChange }) {
-    const classes = []
-
+    let classes;
+    
     if(favoriteNameActive) {
-        classes.push('favorite-city-menu__heart-img heart-img_active')
+        classes = 'favorite-city-menu__heart-img heart-img_active'
     } else {
-        classes.push('favorite-city-menu__heart-img')
+        classes = 'favorite-city-menu__heart-img'
     }
     
     return (
