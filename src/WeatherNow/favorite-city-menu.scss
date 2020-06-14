@@ -1,15 +1,15 @@
-.display-favorite {
+.favorite-city-menu {
     width: 300px;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 10px;
-    .display-favorite__city {
-        .display-favorite__active-city {
+    .favorite-city-menu__city {
+        .favorite-city-menu__active-city {
             margin-left: 10px;
             text-transform: capitalize;
         }
     }
-    .display-favorite__heart-img {
+    .favorite-city-menu__heart-img {
         margin-right: 20px;
         width: 45px;
         height: 45px;

@@ -5,17 +5,17 @@ function FavoriteCityMenu({ searchFormValue, favoriteNameActive, onChange }) {
     const classes = []
 
     if(favoriteNameActive) {
-        classes.push('display-favorite__heart-img heart-img_active')
+        classes.push('favorite-city-menu__heart-img heart-img_active')
     } else {
-        classes.push('display-favorite__heart-img')
+        classes.push('favorite-city-menu__heart-img')
     }
     
     return (
-        <div className='display-favorite flex'>
-            <div className='display-favorite__city'>
+        <div className='favorite-city-menu flex'>
+            <div className='favorite-city-menu__city'>
                 <span 
-                  className='display-favorite__active-city'
-                  id='display-favorite__active-city'>
+                  className='favorite-city-menu__active-city'
+                  id='favorite-city-menu__active-city'>
                     {searchFormValue}
                 </span>
             </div>
