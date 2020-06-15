@@ -11,10 +11,11 @@ export default function FavoriteCityList({ citiesList }) {
                 <span>Added Locations:</span>
             </div>
             <div className='favorite-cities__list flex'>
-                {isCityListEmpty ? undefined :
-                    ([...citiesList].map((city,i) => {
+                {isCityListEmpty 
+                    ? undefined 
+                    : ([...citiesList].map((city,i) => {
                         return <FavoriteCity city={city} key={i}></FavoriteCity>
-                    }))
+                      }))
                 }
             </div>
         </div>
