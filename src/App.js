@@ -47,6 +47,9 @@ function App() {
 
     function selectFavoriteCity(city) {
         console.log(city)
+        setSearchFormValue(city)
+        setFavoriteName(city)
+        
     }
 
     return (

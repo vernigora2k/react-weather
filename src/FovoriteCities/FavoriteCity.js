@@ -12,6 +12,7 @@ export default function FavoriteCity({ city, changeFavoriteName }) {
    
 
     function showFavoriteCityPressed() {
+        changeFavoriteName(city)
         isFavoriteCityPressed = !isFavoriteCityPressed
     }
     //changeFavoriteName('this.city')
@@ -19,7 +20,7 @@ export default function FavoriteCity({ city, changeFavoriteName }) {
     return (
         <div 
           className={favoriteCity}
-          onClick={() => changeFavoriteName(city)}>
+          onClick={() => showFavoriteCityPressed()}>
             <span>{city}</span>
         </div>
     )
