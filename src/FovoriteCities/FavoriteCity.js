@@ -5,8 +5,7 @@ import Context from '../context'
 export default function FavoriteCity({ city, changeFavoriteName }) {
 
     const { favoriteName } = useContext(Context)
-    console.log(favoriteName)
-    const [favoriteCityPressed, setFavoriteCityPressed] = useState(false)
+    //const [favoriteCityPressed, setFavoriteCityPressed] = useState(false)
 
     let isFavoriteCityPressed
 
@@ -22,11 +21,8 @@ export default function FavoriteCity({ city, changeFavoriteName }) {
     })
     
     function showFavoriteCityPressed() {
-        
-        isFavoriteCityPressed = true
         changeFavoriteName(city)
-        setFavoriteCityPressed(true)
-        console.log('show.....')
+        //setFavoriteCityPressed(true)
     }
 
     return (
