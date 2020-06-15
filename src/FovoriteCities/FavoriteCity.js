@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 
-export default function FavoriteCity({ city }) {
+export default function FavoriteCity({ city, changeFavoriteName }) {
 
     let isFavoriteCityPressed = false
     const favoriteCity = classNames({
@@ -9,14 +9,17 @@ export default function FavoriteCity({ city }) {
         'favorite-city_pressed': isFavoriteCityPressed
     })
     
+   
+
     function showFavoriteCityPressed() {
         isFavoriteCityPressed = !isFavoriteCityPressed
     }
+    //changeFavoriteName('this.city')
 
     return (
         <div 
           className={favoriteCity}
-          onClick={console.log('click')}>
+          onClick={() => changeFavoriteName(city)}>
             <span>{city}</span>
         </div>
     )

@@ -45,6 +45,10 @@ function App() {
         }
     }
 
+    function selectFavoriteCity(city) {
+        console.log(city)
+    }
+
     return (
         <div className='wrapper'>
             <div className='search-body flex'>
@@ -74,7 +78,7 @@ function App() {
                 </div>
                 <div className='main-body__favorite-cities'>
                     <FavoriteCityList 
-                      favoriteName={favoriteName}
+                      onChangeFavorite={selectFavoriteCity}
                       favoriteNameActive={favoriteNameActive}
                       citiesList={citiesList}>
                     </FavoriteCityList>

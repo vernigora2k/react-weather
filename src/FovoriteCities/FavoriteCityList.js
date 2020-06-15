@@ -1,8 +1,9 @@
 import React from 'react'
 import './favorite-city-list.scss'
 import FavoriteCity from './FavoriteCity'
+import { checkPropTypes } from 'prop-types'
 
-export default function FavoriteCityList({ citiesList }) {
+export default function FavoriteCityList({ citiesList, onChangeFavorite }) {
     let isCityListEmpty = !!!citiesList.size
 
     return (
@@ -14,7 +15,7 @@ export default function FavoriteCityList({ citiesList }) {
                 {isCityListEmpty 
                     ? undefined 
                     : ([...citiesList].map((city,i) => {
-                        return <FavoriteCity city={city} key={i}></FavoriteCity>
+                        return <FavoriteCity city={city} key={i} changeFavoriteName={onChangeFavorite}></FavoriteCity>
                       }))
                 }
             </div>
