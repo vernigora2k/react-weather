@@ -9,13 +9,11 @@ export default function FavoriteCity({ city, changeFavoriteName }) {
         'favorite-city_pressed': isFavoriteCityPressed
     })
     
-   
-
     function showFavoriteCityPressed() {
+        isFavoriteCityPressed = true
         changeFavoriteName(city)
-        isFavoriteCityPressed = !isFavoriteCityPressed
+        
     }
-    //changeFavoriteName('this.city')
 
     return (
         <div 
