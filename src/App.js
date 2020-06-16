@@ -7,7 +7,6 @@ import FavoriteCityMenu from './WeatherNow/FavoriteCityMenu'
 import MainMenu from './Menu/MainMenu'
 import FavoriteCityList from './FovoriteCities/FavoriteCityList'
 import Context from './context'
-import { showWeather } from './js/weatherView'
 
 function App() {
     const set = new Set()
@@ -35,7 +34,6 @@ function App() {
     function changeInputValue(response) {
         setSearchFormValue(response)
         checkCityInList(response)
-        showTodayWeather(response)
     }
 
     
@@ -52,11 +50,6 @@ function App() {
         console.log(city)
         setSearchFormValue(city)
         setFavoriteName(city)
-        showTodayWeather(city)
-    }
-
-    function showTodayWeather(city) {
-        showWeather(city)
     }
 
     return (
