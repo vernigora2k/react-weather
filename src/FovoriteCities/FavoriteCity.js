@@ -3,10 +3,7 @@ import classNames from 'classnames'
 import Context from '../context'
 
 export default function FavoriteCity({ city, changeFavoriteName }) {
-
     const { favoriteName } = useContext(Context)
-    //const [favoriteCityPressed, setFavoriteCityPressed] = useState(false)
-
     let isFavoriteCityPressed
 
     if(favoriteName === city) {
@@ -22,7 +19,6 @@ export default function FavoriteCity({ city, changeFavoriteName }) {
     
     function showFavoriteCityPressed() {
         changeFavoriteName(city)
-        //setFavoriteCityPressed(true)
     }
 
     return (
