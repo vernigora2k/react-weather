@@ -35,7 +35,7 @@ function App() {
     function changeInputValue(response) {
         setSearchFormValue(response)
         checkCityInList(response)
-        showWeather(response)
+        showTodayWeather(response)
     }
 
     
@@ -52,7 +52,11 @@ function App() {
         console.log(city)
         setSearchFormValue(city)
         setFavoriteName(city)
-        
+        showTodayWeather(city)
+    }
+
+    function showTodayWeather(city) {
+        showWeather(city)
     }
 
     return (
