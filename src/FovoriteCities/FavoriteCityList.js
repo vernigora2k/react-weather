@@ -1,7 +1,6 @@
 import React from 'react'
 import './favorite-city-list.scss'
 import FavoriteCity from './FavoriteCity'
-import { checkPropTypes } from 'prop-types'
 
 export default function FavoriteCityList({ citiesList, onChangeFavorite }) {
     let isCityListEmpty = !!!citiesList.size
