@@ -1,5 +1,5 @@
 import { URLweather, URLtime, URLforecast} from "./config.js";
-import { errorHandler } from "./controller.js";
+//import { errorHandler } from "./controller.js";
 
 export function apiRequest(url, config, forecast) {
     let URL;
@@ -15,7 +15,7 @@ export function apiRequest(url, config, forecast) {
     .then(response => {
         return response.json()
     })
-    .catch(errorHandler)
+    .catch('errorHandler')
 }
 
     
