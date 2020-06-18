@@ -3,13 +3,14 @@ import './weather.scss'
 import Context from '../context'
 import { getWeather, getLocalTime } from '../js/controller'
 
-const { favoriteName } = useContext(Context)
-//showWeather(favoriteName)
-console.log(favoriteName)
+
 
 export default function Weather() {
+    const { searchFormValue } = useContext(Context)
+    showWeather(searchFormValue)
 
     function showWeather(city) {
+        console.log(city)
         getWeather(city)
         .then(response => {
             const data = response.data[0]

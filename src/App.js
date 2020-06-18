@@ -53,7 +53,7 @@ function App() {
     }
 
     return (
-        <Context.Provider value={{favoriteName}}>
+        <Context.Provider value={{favoriteName, searchFormValue}}>
             <div className='wrapper'>
                 <div className='search-body flex'>
                     <div className='search-body__search-form'>
