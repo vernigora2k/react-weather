@@ -6,18 +6,17 @@ import { getWeather, getLocalTime } from '../js/controller'
 
 
 export default function Weather() {
-    const { searchFormValue } = useContext(Context)
+    const { searchFormValue, changeTime } = useContext(Context)
     showWeather(searchFormValue)
 
     function showWeather(city) {
-        console.log(city)
         getWeather(city)
         .then(response => {
             const data = response.data[0]
             const {temp, weather: {description, icon}, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad} = data
             getLocalTime(timezone)
                 .then(response => {
-                    console.log(response.datetime.slice(11,16))
+                    changeTime(response.datetime.slice(11,16))
                 })
                 .catch('errorHandler')
             })

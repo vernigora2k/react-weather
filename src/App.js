@@ -14,6 +14,11 @@ function App() {
     const [favoriteName, setFavoriteName] = useState(searchFormValue)
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
+    const [time, setTime] = useState('local time')
+
+    function changeTime(time) {
+        setTime(time)
+    }
 
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
@@ -53,7 +58,7 @@ function App() {
     }
 
     return (
-        <Context.Provider value={{favoriteName, searchFormValue}}>
+        <Context.Provider value={{favoriteName, searchFormValue, time, changeTime}}>
             <div className='wrapper'>
                 <div className='search-body flex'>
                     <div className='search-body__search-form'>
