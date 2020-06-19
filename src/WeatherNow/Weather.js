@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import './weather.scss'
 import Context from '../context'
 import { getWeather, getLocalTime } from '../js/controller'
@@ -7,6 +7,7 @@ import { getWeather, getLocalTime } from '../js/controller'
 
 export default function Weather() {
     const { searchFormValue, changeTime } = useContext(Context)
+    //const [temp, setTemp] = useState()
    
     getWeather(searchFormValue)
     .then(response => {
@@ -22,7 +23,7 @@ export default function Weather() {
 
     return (
         <div className='weather'>
-            <div className='weather__temp'>{temp}</div>
+            <div className='weather__temp'></div>
             <div className='weather__icon flex'>
                 <div className='weather__icon-description'>clouds</div>
                 <div className='weather__icon-img'>
