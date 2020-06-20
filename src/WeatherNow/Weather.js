@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './weather.scss'
 import Context from '../context'
 import { getWeather, getLocalTime } from '../js/controller'
@@ -7,20 +7,35 @@ import { getWeather, getLocalTime } from '../js/controller'
 
 export default function Weather() {
     const { searchFormValue, changeTime } = useContext(Context)
-    //const [state, setState] = useState()
-
+    const [state, setState] = useState()
+    
     getWeather(searchFormValue)
     .then(response => {
         const data = response.data[0]
         const {temp, weather: {description, icon}, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad} = data
+        
         //setState({temp, weather: {description, icon}, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad})
-        //console.log(state)
+        console.log(state)
+        
         getLocalTime(timezone)
             .then(response => {
                 changeTime(response.datetime.slice(11,16))
             })
             .catch('errorHandler')
+        console.log(temp)
+        return temp
+    })
+    .then(
+        //res => {console.log(res)}
+        useEffect(temp => {
+            //function changeState() {
+                //setState({temp, weather: {description, icon}, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad})
+                //setState(res)
+                console.log(temp)
+                
+            //}
         })
+    )
     .catch('errorHandler')
 
     return (
