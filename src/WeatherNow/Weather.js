@@ -7,23 +7,29 @@ export default function Weather() {
     const { searchFormValue, changeTime } = useContext(Context)
     const [state, setState] = useState('')
 
-    getWeather(searchFormValue)
-    .then(response => {
-        const data = response.data[0]
-        const {temp, weather: {description, icon}, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad} = data 
-        getLocalTime(timezone)
-            .then(response => {
-                changeTime(response.datetime.slice(11,16))
-            })
-            .catch('errorHandler')
+    
+    useEffect(() => {
+        getWeather(searchFormValue)
+        .then(response => {
+            const data = response.data[0]
+            const {temp, weather: {description, icon}, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad} = data 
+            setState(temp, description, icon, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad)
+            getLocalTime(timezone)
+                .then(response => {
+                    changeTime(response.datetime.slice(11,16))
+                })
+                .catch('errorHandler')
+        })
+        .catch('errorHandler')
     })
-    .catch('errorHandler')
 
-    useEffect(() => {setState(temp, description, icon, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad)})
+    console.log(state)
+
+    //useEffect(() => {setState(temp, description, icon, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad)})
 
     return (
         <div className='weather'>
-            <div className='weather__temp'>{state.temp}</div>
+            <div className='weather__temp'>{state}</div>
             <div className='weather__icon flex'>
                 <div className='weather__icon-description'>clouds</div>
                 <div className='weather__icon-img'>
