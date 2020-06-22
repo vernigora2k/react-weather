@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import SearchForm from './Search/SearchForm'
 import LocalTime from './Search/LocalTime'
 import Weather from './WeatherNow/Weather'
@@ -15,6 +15,17 @@ function App() {
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
     const [time, setTime] = useState('local time')
+
+    useEffect(() => {
+        console.log(citiesList)
+        if (localStorage.getItem('citiesList')) {
+            console.log('is there citiesList' + localStorage.getItem('citiesList'))
+        }
+    }, [])
+
+    useEffect(() => {
+        console.log('useEffect for save localstorage')
+    }, [citiesList])
 
     function changeTime(time) {
         setTime(time)
