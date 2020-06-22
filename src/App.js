@@ -18,7 +18,6 @@ function App() {
 
     function changeTime(time) {
         setTime(time)
-        console.log(time)
     }
 
     function changeFavorite() {
@@ -53,7 +52,6 @@ function App() {
     }
 
     function selectFavoriteCity(city) {
-        console.log(city)
         setSearchFormValue(city)
         setFavoriteName(city)
     }

@@ -15,7 +15,6 @@ export default function Weather() {
             const data = response.data[0]
             setState(data)
             // setState(temp, description, icon, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad)
-            console.log(data.timezone)
             getLocalTime(data.timezone)
                 .then(response => {
                     changeTime(response.datetime.slice(11,16))
