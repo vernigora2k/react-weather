@@ -7,13 +7,12 @@ export default function Weather() {
     const { searchFormValue, changeTime } = useContext(Context)
     const [state, setState] = useState('')
     let description
+    let iconImg = 'c01d'
 
-    
     useEffect(() => {
         getWeather(searchFormValue)
         .then(response => {
             const data = response.data[0]
-            //const {temp, weather: {description, icon}, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad} = data 
             setState(data)
             // setState(temp, description, icon, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad)
             console.log(data.timezone)
@@ -26,20 +25,24 @@ export default function Weather() {
         .catch('errorHandler')
     }, [searchFormValue])
 
-    console.log(Math.round(state.temp))
     if (state.weather) {
-        console.log(state.weather.description)
         description = state.weather.description
+        iconImg = state.weather.icon
     }
     
-
     return (
         <div className='weather'>
             <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
             <div className='weather__icon flex'>
                 <div className='weather__icon-description'>{description}</div>
                 <div className='weather__icon-img'>
-                    <img className='icon-img' src={'weather-icons/c01d.png'} alt='icon-img' width='140px'></img>
+                    <img 
+                      className='icon-img' 
+                      src={require(`./img/weather-icons/${iconImg}.png`)} 
+                      alt='icon-img' 
+                      width='140px'
+                    >
+                    </img>
                 </div>
             </div>
         </div>
