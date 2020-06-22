@@ -13,23 +13,25 @@ export default function Weather() {
         .then(response => {
             const data = response.data[0]
             const {temp, weather: {description, icon}, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad} = data 
-            setState(temp, description, icon, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad)
-            getLocalTime(timezone)
+            setState(data)
+            // setState(temp, description, icon, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad)
+            console.log(data.timezone)
+            getLocalTime(data.timezone)
                 .then(response => {
                     changeTime(response.datetime.slice(11,16))
                 })
                 .catch('errorHandler')
         })
         .catch('errorHandler')
-    })
+    },[searchFormValue])
 
-    console.log(state)
+    console.log(state.temp)
 
     //useEffect(() => {setState(temp, description, icon, timezone, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad)})
 
     return (
         <div className='weather'>
-            <div className='weather__temp'>{state}</div>
+            <div className='weather__temp'>{state.temp}</div>
             <div className='weather__icon flex'>
                 <div className='weather__icon-description'>clouds</div>
                 <div className='weather__icon-img'>

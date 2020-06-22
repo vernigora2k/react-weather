@@ -18,6 +18,7 @@ function App() {
 
     function changeTime(time) {
         setTime(time)
+        console.log(time)
     }
 
     function changeFavorite() {
