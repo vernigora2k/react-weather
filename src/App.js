@@ -20,6 +20,7 @@ function App() {
         console.log(citiesList)
         if (localStorage.getItem('citiesList')) {
             console.log('is there citiesList' + localStorage.getItem('citiesList'))
+            setCitiesList(citiesList.add(localStorage.getItem('citiesList')))
         }
     }, [])
 
@@ -39,10 +40,12 @@ function App() {
             setCitiesList(citiesList.add(searchFormValue.toLowerCase()))
             localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
             //console.log(JSON.parse(localStorage.getItem('citiesList')))
+            console.log(citiesList)
         } else {
             citiesList.delete(searchFormValue)
             setCitiesList(citiesList)
             localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
+            console.log(citiesList)
         }
     }
 
