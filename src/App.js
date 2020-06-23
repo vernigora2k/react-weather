@@ -20,7 +20,15 @@ function App() {
         console.log(citiesList)
         if (localStorage.getItem('citiesList')) {
             console.log('is there citiesList' + localStorage.getItem('citiesList'))
-            setCitiesList(citiesList.add(localStorage.getItem('citiesList')))
+            console.log(JSON.parse(localStorage.getItem('citiesList')))
+            let localStorageCityList = JSON.parse(localStorage.getItem('citiesList'))
+            localStorageCityList.forEach(city => {
+                console.log(city)
+                set.add(city)
+            })
+            console.log(set)
+            setCitiesList(set)
+            //setCitiesList(citiesList.add(localStorage.getItem('citiesList')))
         }
     }, [])
 
