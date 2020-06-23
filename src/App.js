@@ -23,10 +23,6 @@ function App() {
         }
     }, [])
 
-    useEffect(() => {
-        console.log('useEffect for save localstorage')
-    }, [citiesList])
-
     function changeTime(time) {
         setTime(time)
     }
@@ -41,9 +37,12 @@ function App() {
     function addRemoveFavoriteCity() { 
         if(!favoriteNameActive) {
             setCitiesList(citiesList.add(searchFormValue.toLowerCase()))
+            localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
+            //console.log(JSON.parse(localStorage.getItem('citiesList')))
         } else {
             citiesList.delete(searchFormValue)
             setCitiesList(citiesList)
+            localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
         }
     }
 
