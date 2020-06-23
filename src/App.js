@@ -17,18 +17,12 @@ function App() {
     const [time, setTime] = useState('local time')
 
     useEffect(() => {
-        console.log(citiesList)
         if (localStorage.getItem('citiesList')) {
-            console.log('is there citiesList' + localStorage.getItem('citiesList'))
-            console.log(JSON.parse(localStorage.getItem('citiesList')))
             let localStorageCityList = JSON.parse(localStorage.getItem('citiesList'))
             localStorageCityList.forEach(city => {
-                console.log(city)
                 set.add(city)
             })
-            console.log(set)
             setCitiesList(set)
-            //setCitiesList(citiesList.add(localStorage.getItem('citiesList')))
         }
     }, [])
 
@@ -39,21 +33,17 @@ function App() {
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
         setFavoriteName(searchFormValue) 
-        addRemoveFavoriteCity()
-        
+        addRemoveFavoriteCity() 
     }
 
     function addRemoveFavoriteCity() { 
         if(!favoriteNameActive) {
             setCitiesList(citiesList.add(searchFormValue.toLowerCase()))
             localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
-            //console.log(JSON.parse(localStorage.getItem('citiesList')))
-            console.log(citiesList)
         } else {
             citiesList.delete(searchFormValue)
             setCitiesList(citiesList)
             localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
-            console.log(citiesList)
         }
     }
 
@@ -61,7 +51,6 @@ function App() {
         setSearchFormValue(response)
         checkCityInList(response)
     }
-
     
     function checkCityInList(inputValue) {
         let isFavoriteCityExist = citiesList.has(inputValue)
@@ -75,6 +64,7 @@ function App() {
     function selectFavoriteCity(city) {
         setSearchFormValue(city)
         setFavoriteName(city)
+        checkCityInList(city)
     }
 
     return (
