@@ -64,7 +64,52 @@ export default function Weather() {
                         </img>
                     </div>
                 </div>
-            </div>
+
+                <div className="media__details hidden">
+                            <table className="table-details" width='298px' height='198px'>
+                                <tr>
+                                    <td className="cell-prop-wind">
+                                        <div className="flex">
+                                            <img src="./src/img/wind.svg" alt="wind" width="50px" style={{paddingTop: 3 +'px'}} ></img>
+                                            <span className="wind-dir">north</span>
+                                            <span className="wind-speed"></span>
+                                        </div>
+                                    </td>
+                                    <td className="cell-prop-pres">
+                                        <div className="flex">
+                                            <img src="./src/img/pressure.svg" alt="pressure" width="40px"></img>
+                                            <span className="pressure">780 mb</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className="cell-prop-sunrize">
+                                        <div className="flex">
+                                            <img src="./src/img/sun.svg" alt="sunrize" width="20px"></img>
+                                            <span className="sunrize">sunrize</span>
+                                            <img src="./src/img/moon.svg" alt="sunset" width="20px"></img>
+                                            <span className="sunset">sunset</span>
+                                        </div>
+                                    </td>
+                                    <td className="cell-prop-solarrad">
+                                        <div className="flex">
+                                            <div>
+                                                <img src="./src/img/sun.svg" alt="sun" width="25px"></img>
+                                                <img src="./src/img/radiation.svg" alt="radiation" width="25px"></img>
+                                            </div>
+                                            <div>
+                                                <span style={{fontSize: 19 +'px'}}>solar-radiation</span>
+                                            </div>
+                                                <span className="radiation"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+
+            </div>            
         )
     }
 }
