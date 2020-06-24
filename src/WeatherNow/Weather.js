@@ -50,9 +50,9 @@ export default function Weather() {
 
     if(mainMenuActiveBtn == 'details') {
         return (
-            <div className='weather flex'>
+            <div className='weather flex' style={{justifyContent: 'space-between'}}>
                 <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
-                <div className='weather__icon flex'>
+                <div className='weather__icon flex' style={{marginRight: 20 +'px'}}>
                     <div className='weather__icon-description_details'>{description}</div>
                     <div className='weather__icon-img'>
                         <img 
@@ -65,8 +65,8 @@ export default function Weather() {
                     </div>
                 </div>
 
-                <div className="media__details hidden">
-                            <table className="table-details" width='298px' height='198px'>
+                <div className="media__details">
+                            <table className="table-details" width='300px' height='200px'>
                                 <tr>
                                     <td className="cell-prop-wind">
                                         <div className="flex">
