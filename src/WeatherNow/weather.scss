@@ -34,46 +34,54 @@
             border-collapse: collapse;
             border-top: 1px solid black;
             border-bottom: 1px solid black;
-            table td {
-                width: 150px;
-                height: 100px;
-                .cell-prop-wind {
-                    border-bottom: 1px solid black;
-                    border-right: 1px solid black;
-                    font-size: 20px;
-                }
-                .cell-prop-wind>div {
-                    justify-content: space-around;
-                    flex-direction: column;
-                    align-items: center;
-                }
-                .cell-prop-pres {
-                    border-bottom: 1px solid black;
-                }
-                .cell-prop-pres>div {
-                    justify-content: space-around;
-                    flex-direction: column;
-                    align-items: center;
-                }
-                .cell-prop-sunrize {
-                    border-right: 1px solid black;
-                    font-size:19px;
-                }
-                .cell-prop-sunrize>div {
-                    justify-content: space-between;
-                    flex-direction: column;
-                    align-items: center;
-                }
-                .cell-prop-solarrad>div {
-                    justify-content: space-between;
-                    flex-direction: column;
-                    align-items: center;
-                    .radiation {
-                        font-size: 19px;
-                    }
-                }
-            }
         }
+        table td {
+            width: 150px;
+            height: 100px; 
+        }
+        .cell-prop-wind {
+            border-bottom: 1px solid black;
+            border-right: 1px solid black;
+            font-size: 20px;
+        }
+
+        .cell-prop-wind>div {
+            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cell-prop-pres {
+            border-bottom: 1px solid black;
+        }
+
+        .cell-prop-pres>div {
+            justify-content: space-around;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .cell-prop-sunrize {
+            border-right: 1px solid black;
+            font-size:12px;
+        }
+
+        .cell-prop-sunrize>div {
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .cell-prop-solarrad>div {
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+        }
+
+            .radiation {
+                font-size: 19px;
+            }
     }
 
 
