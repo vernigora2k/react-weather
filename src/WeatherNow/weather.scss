@@ -37,7 +37,7 @@
         }
         table td {
             width: 150px;
-            height: 100px; 
+            height: 95px; 
         }
         .cell-prop-wind {
             border-bottom: 1px solid black;
@@ -63,7 +63,8 @@
         
         .cell-prop-sunrize {
             border-right: 1px solid black;
-            font-size:12px;
+            font-size: 13px;
+            line-height: 1rem;
         }
 
         .cell-prop-sunrize>div {
