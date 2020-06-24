@@ -4,7 +4,7 @@ import Context from '../context'
 import { getWeather, getLocalTime } from '../js/controller'
 
 export default function Weather() {
-    const { searchFormValue, changeTime } = useContext(Context)
+    const { searchFormValue, changeTime, mainMenuActiveBtn } = useContext(Context)
     const [state, setState] = useState('')
     let description
     let iconImg = 'c01d'
@@ -28,21 +28,43 @@ export default function Weather() {
         iconImg = state.weather.icon
     }
     
-    return (
-        <div className='weather'>
-            <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
-            <div className='weather__icon flex'>
-                <div className='weather__icon-description'>{description}</div>
-                <div className='weather__icon-img'>
-                    <img 
-                      className='icon-img' 
-                      src={require(`./img/weather-icons/${iconImg}.png`)} 
-                      alt='icon-img' 
-                      width='140px'
-                    >
-                    </img>
+    if(mainMenuActiveBtn == 'now') {
+        return (
+            <div className='weather'>
+                <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
+                <div className='weather__icon flex'>
+                    <div className='weather__icon-description'>{description}</div>
+                    <div className='weather__icon-img'>
+                        <img 
+                        className='icon-img' 
+                        src={require(`./img/weather-icons/${iconImg}.png`)} 
+                        alt='icon-img' 
+                        width='140px'
+                        >
+                        </img>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
+
+    if(mainMenuActiveBtn == 'details') {
+        return (
+            <div className='weather flex'>
+                <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
+                <div className='weather__icon flex'>
+                    <div className='weather__icon-description_details'>{description}</div>
+                    <div className='weather__icon-img'>
+                        <img 
+                        className='icon-img' 
+                        src={require(`./img/weather-icons/${iconImg}.png`)} 
+                        alt='icon-img' 
+                        width='80px'
+                        >
+                        </img>
+                    </div>
+                </div>
+            </div>
+        )
+    }
 }

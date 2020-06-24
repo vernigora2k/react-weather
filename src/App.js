@@ -15,6 +15,7 @@ function App() {
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
     const [time, setTime] = useState('local time')
+    const [mainMenuActiveBtn, setMainMenuActiveBtn] = useState('details')
 
     useEffect(() => {
         if (localStorage.getItem('citiesList')) {
@@ -68,7 +69,7 @@ function App() {
     }
 
     return (
-        <Context.Provider value={{favoriteName, searchFormValue, time, changeTime}}>
+        <Context.Provider value={{favoriteName, searchFormValue, time, mainMenuActiveBtn, changeTime}}>
             <div className='wrapper'>
                 <div className='search-body flex'>
                     <div className='search-body__search-form'>
