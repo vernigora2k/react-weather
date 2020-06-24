@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './main-menu.scss'
+import Context from '../context'
 
 export default function MainMenu() {
+    const { mainMenuActiveBtn } = useContext(Context)
+    console.log(mainMenuActiveBtn)
     return (
         <div className='main-menu'>
             <button className='main-menu__button button-now button_active'>Now</button>
