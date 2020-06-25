@@ -8,8 +8,6 @@ export default function MainMenu() {
     let buttonDetailsActive = ''
     let buttonForecastActive = ''
 
-    console.log(mainMenuActiveBtn)
-
     switch(mainMenuActiveBtn) {
         case 'now':
             buttonNowActive = 'button_active'
@@ -20,6 +18,8 @@ export default function MainMenu() {
         case 'forecast':
             buttonForecastActive = 'button_active'
             break
+        default:
+            buttonNowActive = 'button_active'
     }
 
     function showBtnPressed(btn) {

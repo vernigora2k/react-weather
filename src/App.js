@@ -15,7 +15,7 @@ function App() {
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
     const [time, setTime] = useState('local time')
-    const [mainMenuActiveBtn, setMainMenuActiveBtn] = useState('details')
+    const [mainMenuActiveBtn, setMainMenuActiveBtn] = useState('now')
 
     useEffect(() => {
         if (localStorage.getItem('citiesList')) {
@@ -69,7 +69,6 @@ function App() {
     }
 
     function menuBtnPressed(btn) {
-        console.log(btn)
         setMainMenuActiveBtn(btn)
     }
 
