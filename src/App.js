@@ -68,8 +68,13 @@ function App() {
         checkCityInList(city)
     }
 
+    function menuBtnPressed(btn) {
+        console.log(btn)
+        setMainMenuActiveBtn(btn)
+    }
+
     return (
-        <Context.Provider value={{favoriteName, searchFormValue, time, mainMenuActiveBtn, changeTime}}>
+        <Context.Provider value={{favoriteName, searchFormValue, time, mainMenuActiveBtn, changeTime, menuBtnPressed}}>
             <div className='wrapper'>
                 <div className='search-body flex'>
                     <div className='search-body__search-form'>
