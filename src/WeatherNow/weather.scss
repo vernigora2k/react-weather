@@ -86,4 +86,66 @@
     }
 
 
+    .media__forecast {
+        height: 410px;
+        border-bottom: 1px solid black;
+        border: 10px solid red;
+        .forecast-menu {
+            .forecast-seven {
+                border-bottom: 1px solid black;
+                .seven {
+                    font-size: 20px;
+                    margin-left: 15px;
+                }
+            }
+        }
+        .forecast-desk {
+            width: 298px;
+            height: 375px;
+            justify-content: space-between;
+            overflow-y: scroll;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+
+
+        .forecastDay {
+            width: 120px;
+            height: 120px;
+            background-color: lightcyan;
+            margin-top: 10px;
+            font-size: 16px;
+            line-height: 2px;
+            text-align: center;
+        }
+
+            .datetime {
+                font-weight: 500;
+            }
+
+            .forecastDescription {
+                line-height: 13px;
+            }
+
+
+
+        .forecast-two-weeks {
+            border-bottom: 1px solid black;
+            border-left: 1px solid black;
+        } 
+            
+            .two-weeks {
+                font-size: 20px;
+                margin-left: 10px;
+            }
+
+        .forecast--active {
+            color: white;
+            background-color: black;
+        }
+
+
+
 }

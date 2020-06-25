@@ -112,17 +112,17 @@ export default function Weather() {
 
     if(mainMenuActiveBtn === 'forecast') {
         return (
-            <div class="media__forecast hidden">
-            <div class="forecast-menu flex">
-                <div class="forecast-seven forecast--active" style="width: 50%; height: 30px;">
-                    <button class="seven">forecast seven</button>
+            <div className="media__forecast">
+                <div className="forecast-menu flex">
+                    <div className="forecast-seven forecast--active"  style={{ width: 50 +'%', height: 30 +'px' }}>
+                        <button className="seven">forecast seven</button>
+                    </div>
+                    <div className="forecast-two-weeks" style={{ width: 50 +'%', height: 30 +'px' }}>
+                        <button className="two-weeks">forecast 2 weeks</button>
+                    </div>
                 </div>
-                <div class="forecast-two-weeks" style="width: 50%; height: 30px;">
-                    <button class="two-weeks">forecast 2 weeks</button>
-                </div>
+                <div className="forecast-desk flex"></div>
             </div>
-            <div class="forecast-desk flex"></div>
-        </div>
         )
     }
 
