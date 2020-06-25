@@ -1,3 +1,4 @@
+
 .weather {
     .weather__temp {
         height: 120px;
@@ -9,7 +10,6 @@
         }
     }
     .weather__icon {
-        //height: 200px;
         padding-top: 25px;
         flex-direction: column;
         align-items: center;
@@ -87,10 +87,18 @@
 
 
     .media__forecast {
-        height: 410px;
+        height: 333px;
         border-bottom: 1px solid black;
-        border: 10px solid red;
-        .forecast-menu {
+            .forecast-menu {
+                button, input[type="submit"], input[type="reset"] {
+                    background: none;
+                    color: inherit;
+                    border: none;
+                    padding: 0;
+                    font: inherit;
+                    cursor: pointer;
+                    outline: inherit;
+            }
             .forecast-seven {
                 border-bottom: 1px solid black;
                 .seven {
@@ -98,10 +106,22 @@
                     margin-left: 15px;
                 }
             }
+            .forecast-two-weeks {
+                border-bottom: 1px solid black;
+                border-left: 1px solid black;
+                .two-weeks {
+                    font-size: 20px;
+                    margin-left: 10px;
+                }
+            } 
+            .forecast--active {
+                color: white;
+                background-color: black;
+            }
         }
         .forecast-desk {
             width: 298px;
-            height: 375px;
+            height: 302px;
             justify-content: space-between;
             overflow-y: scroll;
             padding-left: 15px;
@@ -111,40 +131,29 @@
 
 
 
-        .forecastDay {
-            width: 120px;
-            height: 120px;
-            background-color: lightcyan;
-            margin-top: 10px;
-            font-size: 16px;
-            line-height: 2px;
-            text-align: center;
-        }
+        // .forecastDay {
+        //     width: 120px;
+        //     height: 120px;
+        //     background-color: lightcyan;
+        //     margin-top: 10px;
+        //     font-size: 16px;
+        //     line-height: 2px;
+        //     text-align: center;
+        // }
 
-            .datetime {
-                font-weight: 500;
-            }
+        //     .datetime {
+        //         font-weight: 500;
+        //     }
 
-            .forecastDescription {
-                line-height: 13px;
-            }
+        //     .forecastDescription {
+        //         line-height: 13px;
+        //     }
 
 
 
-        .forecast-two-weeks {
-            border-bottom: 1px solid black;
-            border-left: 1px solid black;
-        } 
-            
-            .two-weeks {
-                font-size: 20px;
-                margin-left: 10px;
-            }
+        
 
-        .forecast--active {
-            color: white;
-            background-color: black;
-        }
+
 
 
 
