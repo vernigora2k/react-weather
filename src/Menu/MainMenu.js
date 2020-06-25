@@ -4,7 +4,12 @@ import Context from '../context'
 
 export default function MainMenu() {
     const { mainMenuActiveBtn } = useContext(Context)
+    const buttonActive = 'button_active'
     console.log(mainMenuActiveBtn)
+    switch(mainMenuActiveBtn) {
+        case 'details':
+            
+    }
     return (
         <div className='main-menu'>
             <button className='main-menu__button button-now button_active'>Now</button>
