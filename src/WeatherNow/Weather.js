@@ -117,10 +117,10 @@ export default function Weather() {
                 <div className="media__forecast">
                     <div className="forecast-menu flex">
                         <div className="forecast-seven forecast--active"  style={{ width: 50 +'%', height: 30 +'px' }}>
-                            <button className="seven">forecast seven</button>
+                            <button className="seven" onClick={() => showBtnPressed('seven')}>forecast seven</button>
                         </div>
                         <div className="forecast-two-weeks" style={{ width: 50 +'%', height: 30 +'px' }}>
-                            <button className="two-weeks">forecast 2 weeks</button>
+                            <button className="two-weeks" onClick{() => showBtnPressed('two-weeks')}>forecast 2 weeks</button>
                         </div>
                     </div>
                     <div className="forecast-desk flex">
