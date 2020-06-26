@@ -29,6 +29,13 @@ export default function Weather() {
         iconImg = state.weather.icon
     }
     
+    function showBtnPressed(interval) {
+        //forecastInterSelect
+        //возможно тут нужна ф-я которая будет кудато отправлятся.
+        //или скорее всего тут нужно менять стейт который мы отрпавим
+        //в forecastPlates.....
+    }
+
     if(mainMenuActiveBtn === 'now') {
         return (
             <div className='weather'>
