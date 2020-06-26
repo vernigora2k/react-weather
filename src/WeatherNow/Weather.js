@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import './weather.scss'
 import Context from '../context'
 import { getWeather, getLocalTime } from '../js/controller'
+import ForecastPlates from '../Forecast/ForecastPlates'
 
 export default function Weather() {
     const { searchFormValue, changeTime, mainMenuActiveBtn } = useContext(Context)
@@ -122,7 +123,9 @@ export default function Weather() {
                             <button className="two-weeks">forecast 2 weeks</button>
                         </div>
                     </div>
-                    <div className="forecast-desk flex"></div>
+                    <div className="forecast-desk flex">
+                        <ForecastPlates></ForecastPlates>
+                    </div>
                 </div>
             </div>
         )
