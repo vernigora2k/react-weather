@@ -31,6 +31,12 @@ export default function ForecastPlates(forecastInterval) {
                 const {datetime, high_temp, low_temp, pop, weather: {description}} = forecastDay
                 console.log(description)
                 console.log(i, '  ', days)
+                return (
+                    <div className='forecastDay'>
+                        <p className='datetime'>{datetime}</p>
+                        <p className='highTemp'>{Math.round(high_temp)}</p>
+                    </div>
+                )
             }
         });
     }
@@ -38,6 +44,6 @@ export default function ForecastPlates(forecastInterval) {
     console.log(forecastInterval)
 
     return (
-        <div></div>
+        <div>drfdr</div>
     )
 }
