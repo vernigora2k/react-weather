@@ -5,8 +5,12 @@ import { getWeather, getLocalTime } from '../js/controller'
 import ForecastPlates from '../Forecast/ForecastPlates'
 
 export default function Weather() {
+    const [forecastInterval, setForecastInterval] = useState('seven')
     const { searchFormValue, changeTime, mainMenuActiveBtn } = useContext(Context)
     const [state, setState] = useState('')
+    
+    let forecastSeven = ''
+    let forecastTwoWeeks = ''
     let description
     let iconImg = 'c01d'
 
@@ -34,6 +38,18 @@ export default function Weather() {
         //возможно тут нужна ф-я которая будет кудато отправлятся.
         //или скорее всего тут нужно менять стейт который мы отрпавим
         //в forecastPlates.....
+        setForecastInterval(interval)
+    }
+
+    switch(forecastInterval) {
+        case 'seven':
+            forecastSeven = 'forecast--active'
+            break
+        case 'two-weeks':
+            forecastTwoWeeks = 'forecast--active'
+            break
+        default:
+            forecastSeven = 'forecast--active'
     }
 
     if(mainMenuActiveBtn === 'now') {
@@ -123,15 +139,15 @@ export default function Weather() {
             <div className="weather">
                 <div className="media__forecast">
                     <div className="forecast-menu flex">
-                        <div className="forecast-seven forecast--active"  style={{ width: 50 +'%', height: 30 +'px' }}>
+                        <div className={`forecast-seven ${forecastSeven}`}  style={{ width: 50 +'%', height: 30 +'px' }}>
                             <button className="seven" onClick={() => showBtnPressed('seven')}>forecast seven</button>
                         </div>
-                        <div className="forecast-two-weeks" style={{ width: 50 +'%', height: 30 +'px' }}>
-                            <button className="two-weeks" onClick{() => showBtnPressed('two-weeks')}>forecast 2 weeks</button>
+                        <div className={`forecast-two-weeks ${forecastTwoWeeks}`} style={{ width: 50 +'%', height: 30 +'px' }}>
+                            <button className="two-weeks" onClick={() => showBtnPressed('two-weeks')}>forecast 2 weeks</button>
                         </div>
                     </div>
                     <div className="forecast-desk flex">
-                        <ForecastPlates></ForecastPlates>
+                        <ForecastPlates forecastInterval={forecastInterval}></ForecastPlates>
                     </div>
                 </div>
             </div>
