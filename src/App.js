@@ -23,9 +23,15 @@ function App() {
             localStorageCityList.forEach(city => {
                 set.add(city)
             })
-            setCitiesList(set)
+        }
+        if (localStorage.getItem('lastWatchedCity')) {
+            setSearchFormValue(localStorage.getItem('lastWatchedCity'))
         }
     }, [])
+
+    useEffect(() => {
+            localStorage.setItem('lastWatchedCity', searchFormValue)
+    }, [searchFormValue])
 
     function changeTime(time) {
         setTime(time)
