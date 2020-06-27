@@ -21,21 +21,22 @@ export default function ForecastPlates(forecastInterval) {
         })
         .catch('errorHandler')
 
-        if(state.city_name) {
-            console.log('is there data')
-            const { city_name, timezone, data } = state
-            data.forEach((forecastDay,i) => {
-                if(i<days) {
-                    const {datetime, high_temp, low_temp, pop, weather: {description}} = forecastDay
-                    return (
-                        <div className='forecastDay'>
-                            <p className='datetime'>{datetime}</p>
-                            <p className='highTemp'>{Math.round(high_temp)}</p>
-                        </div>
-                    )
-                }
-            });
-        }
-
     }, [searchFormValue])
+
+    if(state.city_name) {
+        const { city_name, timezone, data } = state
+        let plates = data.map((forecastDay,i) => {
+            if(i<days) {
+                const {datetime, high_temp, low_temp, pop, weather: {description}} = forecastDay
+                return (
+                    <div className='forecastDay'>
+                        <p className='datetime'>{datetime}</p>
+                        <p className='highTemp'>{Math.round(high_temp)}</p>
+                    </div>
+                )
+            }
+        });
+        return (plates)
+    }
+    return (<div></div>)
 }
