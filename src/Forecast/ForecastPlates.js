@@ -8,42 +8,34 @@ export default function ForecastPlates(forecastInterval) {
     const { searchFormValue } = useContext(Content)
     let days
 
-    useEffect(() => {
-        getWeather(searchFormValue, 'forecast')
-        .then(response => {
-            setState(response)
-            console.log(response)
-        })
-        .catch('errorHandler')
-    }, [searchFormValue])
-
     if(forecastInterval.forecastInterval === 'seven') {
         days = 7
     }   else {
         days = 14
     }
 
-    if(state.city_name) {
-        console.log('is there data')
-        const { city_name, timezone, data } = state
-        data.forEach((forecastDay,i) => {
-            if(i<days) {
-                const {datetime, high_temp, low_temp, pop, weather: {description}} = forecastDay
-                console.log(description)
-                console.log(i, '  ', days)
-                return (
-                    <div className='forecastDay'>
-                        <p className='datetime'>{datetime}</p>
-                        <p className='highTemp'>{Math.round(high_temp)}</p>
-                    </div>
-                )
-            }
-        });
-    }
+    useEffect(() => {
+        getWeather(searchFormValue, 'forecast')
+        .then(response => {
+            setState(response)
+        })
+        .catch('errorHandler')
 
-    console.log(forecastInterval)
+        if(state.city_name) {
+            console.log('is there data')
+            const { city_name, timezone, data } = state
+            data.forEach((forecastDay,i) => {
+                if(i<days) {
+                    const {datetime, high_temp, low_temp, pop, weather: {description}} = forecastDay
+                    return (
+                        <div className='forecastDay'>
+                            <p className='datetime'>{datetime}</p>
+                            <p className='highTemp'>{Math.round(high_temp)}</p>
+                        </div>
+                    )
+                }
+            });
+        }
 
-    return (
-        <div>drfdr</div>
-    )
+    }, [searchFormValue])
 }
