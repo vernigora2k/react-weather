@@ -24,7 +24,7 @@ export default function ForecastPlates(forecastInterval) {
     }, [searchFormValue])
 
     if(state.city_name) {
-        const { city_name, timezone, data } = state
+        const { data } = state
         const plates = data.map((forecastDay,i) => {
             if(i<days) {
                 const {datetime, high_temp, low_temp, pop, weather: {description}} = forecastDay

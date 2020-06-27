@@ -34,10 +34,6 @@ export default function Weather() {
     }
     
     function showBtnPressed(interval) {
-        //forecastInterSelect
-        //возможно тут нужна ф-я которая будет кудато отправлятся.
-        //или скорее всего тут нужно менять стейт который мы отрпавим
-        //в forecastPlates.....
         setForecastInterval(interval)
     }
 
@@ -153,5 +149,4 @@ export default function Weather() {
             </div>
         )
     }
-
 }
