@@ -116,15 +116,13 @@ function App(props) {
                         favoriteNameActive={favoriteNameActive}
                         citiesList={citiesList}>
                         </FavoriteCityList>
-                        <div>testRedux {props.testRedux} {props.amount}</div>
+                        <div>testRedux {props.testRedux}</div>
                     </div>
                 </div>
             </div>
         </Context.Provider>
     )
 }
-
-// export default App
 
 const mapStateToProps = state => ({
     testRedux: state.id 

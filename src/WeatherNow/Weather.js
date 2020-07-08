@@ -3,8 +3,10 @@ import './weather.scss'
 import Context from '../context'
 import { getWeather, getLocalTime } from '../js/controller'
 import ForecastPlates from '../Forecast/ForecastPlates'
+import { checkPropTypes } from 'prop-types'
+import { connect } from 'react-redux'
 
-export default function Weather() {
+function Weather(props) {
     const [forecastInterval, setForecastInterval] = useState('seven')
     const { searchFormValue, changeTime, mainMenuActiveBtn } = useContext(Context)
     const [state, setState] = useState('')
@@ -53,6 +55,7 @@ export default function Weather() {
             <div className='weather'>
                 <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
                 <div className='weather__icon flex'>
+                {props.testRedux}
                     <div className='weather__icon-description'>{description}</div>
                     <div className='weather__icon-img'>
                         <img 
@@ -150,3 +153,10 @@ export default function Weather() {
         )
     }
 }
+
+//export default Weather
+
+const mapStateToProps = state => ({
+    testRedux: state.id 
+})
+export default connect(mapStateToProps)(Weather)
