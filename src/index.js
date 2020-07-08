@@ -6,13 +6,22 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
-function reducer() {
-  return {
-    id: 133
+const initialState = {
+  id: 233
+}
+
+function reducer(state=initialState, action) {
+  switch(action.type) {
+    case 'INCREMENT':
+      return {
+        id: state.id + 1
+      }
+    default: return state
   }
 }
 
 const store = createStore(reducer)
+//store.dispatch({ type: 'INCREMENT', amount: 5})
 
 ReactDOM.render(
   <Provider store={store}>

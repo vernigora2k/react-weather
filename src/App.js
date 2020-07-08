@@ -77,7 +77,10 @@ function App(props) {
 
     function menuBtnPressed(btn) {
         setMainMenuActiveBtn(btn)
+        props.dispatch({ type: 'INCREMENT', amount: 5})
     }
+
+    console.log(props)
 
     return (
         <Context.Provider value={{favoriteName, searchFormValue, time, mainMenuActiveBtn, changeTime, menuBtnPressed}}>
@@ -113,7 +116,7 @@ function App(props) {
                         favoriteNameActive={favoriteNameActive}
                         citiesList={citiesList}>
                         </FavoriteCityList>
-                        <div>testRedux {props.testRedux}</div>
+                        <div>testRedux {props.testRedux} {props.amount}</div>
                     </div>
                 </div>
             </div>
@@ -124,6 +127,6 @@ function App(props) {
 // export default App
 
 const mapStateToProps = state => ({
-    testRedux: state.id
+    testRedux: state.id 
 })
 export default connect(mapStateToProps)(App)
