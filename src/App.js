@@ -7,8 +7,9 @@ import FavoriteCityMenu from './WeatherNow/FavoriteCityMenu'
 import MainMenu from './Menu/MainMenu'
 import FavoriteCityList from './FovoriteCities/FavoriteCityList'
 import Context from './context'
+import { connect } from 'react-redux'
 
-function App() {
+function App(props) {
     const set = new Set()
     const [searchFormValue, setSearchFormValue] = useState('aktobe')
     const [favoriteName, setFavoriteName] = useState(searchFormValue)
@@ -112,6 +113,7 @@ function App() {
                         favoriteNameActive={favoriteNameActive}
                         citiesList={citiesList}>
                         </FavoriteCityList>
+                        <div>testRedux {props.testRedux}</div>
                     </div>
                 </div>
             </div>
@@ -119,4 +121,9 @@ function App() {
     )
 }
 
-export default App
+// export default App
+
+const mapStateToProps = state => ({
+    testRedux: state.id
+})
+export default connect(mapStateToProps)(App)
