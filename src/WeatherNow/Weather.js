@@ -55,7 +55,7 @@ function Weather(props) {
             <div className='weather'>
                 <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
                 <div className='weather__icon flex'>
-                {props.testRedux}
+                {props.testRedux} {props.testNeoRedux}
                     <div className='weather__icon-description'>{description}</div>
                     <div className='weather__icon-img'>
                         <img 
@@ -157,6 +157,7 @@ function Weather(props) {
 //export default Weather
 
 const mapStateToProps = state => ({
-    testRedux: state.id 
+    testRedux: state.id, 
+    testNeoRedux: state.idNeo
 })
 export default connect(mapStateToProps)(Weather)

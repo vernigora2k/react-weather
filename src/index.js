@@ -7,14 +7,16 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 const initialState = {
-  id: 233
+  id: 233,
+  idNeo: 13
 }
 
 function reducer(state=initialState, action) {
   switch(action.type) {
     case 'INCREMENT':
       return {
-        id: state.id + 1
+        id: state.id + 1,
+        idNeo: state.idNeo - 2
       }
     default: return state
   }
