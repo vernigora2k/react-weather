@@ -16,7 +16,6 @@ function App(props) {
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
     const [time, setTime] = useState('local time')
-    const [mainMenuActiveBtn, setMainMenuActiveBtn] = useState('now')
 
     useEffect(() => {
         if (localStorage.getItem('citiesList')) {
@@ -75,16 +74,8 @@ function App(props) {
         checkCityInList(city)
     }
 
-    function menuBtnPressed(btn) {
-        setMainMenuActiveBtn(btn)
-        //props.dispatch({ type: 'NOW_BTN', amount: 5})
-        //console.log(mainMenuActiveBtn)
-    }
-
-    console.log(props)
-
     return (
-        <Context.Provider value={{favoriteName, searchFormValue, time, mainMenuActiveBtn, changeTime, menuBtnPressed}}>
+        <Context.Provider value={{favoriteName, searchFormValue, time, changeTime}}>
             <div className='wrapper'>
                 <div className='search-body flex'>
                     <div className='search-body__search-form'>

@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 
 function Weather(props) {
     const [forecastInterval, setForecastInterval] = useState('seven')
-    const { searchFormValue, changeTime, mainMenuActiveBtn } = useContext(Context)
+    const { searchFormValue, changeTime } = useContext(Context)
     const [state, setState] = useState('')
     
     let forecastSeven = ''
@@ -52,7 +52,7 @@ function Weather(props) {
 
     console.log(props)
 
-    if(mainMenuActiveBtn === 'now') {
+    if(props.mainMenuActiveBtn === 'now') {
         return (
             <div className='weather'>
                 <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
@@ -73,7 +73,7 @@ function Weather(props) {
         )
     }
 
-    if(mainMenuActiveBtn === 'details') {
+    if(props.mainMenuActiveBtn === 'details') {
         return (
             <div className='weather flex' style={{justifyContent: 'space-between'}}>
                 <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
@@ -135,7 +135,7 @@ function Weather(props) {
         )
     }
 
-    if(mainMenuActiveBtn === 'forecast') {
+    if(props.mainMenuActiveBtn === 'forecast') {
         return (
             <div className="weather">
                 <div className="media__forecast">
@@ -155,8 +155,6 @@ function Weather(props) {
         )
     }
 }
-
-//export default Weather
 
 const mapStateToProps = state => ({
     mainMenuActiveBtn: state.mainMenuActiveBtn, 

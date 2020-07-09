@@ -1,15 +1,12 @@
 import React, { useContext } from 'react'
 import './main-menu.scss'
-import Context from '../context'
 import { connect } from 'react-redux'
 
 function MainMenu(props) {
-    const { mainMenuActiveBtn, menuBtnPressed } = useContext(Context)
     let buttonNowActive = ''
     let buttonDetailsActive = ''
     let buttonForecastActive = ''
 
-    console.log(props)
     switch(props.mainMenuActiveBtn) {
         case 'now':
             buttonNowActive = 'button_active'
@@ -22,10 +19,6 @@ function MainMenu(props) {
             break
         default:
             buttonNowActive = 'button_active'
-    }
-
-    function showBtnPressed(btn) {
-        menuBtnPressed(btn)
     }
 
     return (
