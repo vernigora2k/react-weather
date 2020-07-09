@@ -77,8 +77,8 @@ function App(props) {
 
     function menuBtnPressed(btn) {
         setMainMenuActiveBtn(btn)
-        props.dispatch({ type: 'NOW_BTN', amount: 5})
-        console.log(mainMenuActiveBtn)
+        //props.dispatch({ type: 'NOW_BTN', amount: 5})
+        //console.log(mainMenuActiveBtn)
     }
 
     console.log(props)
@@ -126,6 +126,6 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-    testRedux: state.mainMenuActiveBtn 
+    mainMenuActiveBtn: state.mainMenuActiveBtn
 })
 export default connect(mapStateToProps)(App)

@@ -8,14 +8,22 @@ import { Provider } from 'react-redux'
 
 const initialState = {
   mainMenuActiveBtn: 'now',
-  
 }
 
 function reducer(state=initialState, action) {
+  console.log(action.type)
   switch(action.type) {
     case 'NOW_BTN':
       return {
         mainMenuActiveBtn: 'now'
+      }
+    case 'DETAILS_BTN':
+      return {
+        mainMenuActiveBtn: 'details'
+      }
+    case 'FORECAST_BTN':
+      return {
+        mainMenuActiveBtn: 'forecast'
       }
     default: return state
   }

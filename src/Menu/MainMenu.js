@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
 import './main-menu.scss'
 import Context from '../context'
+import { connect } from 'react-redux'
 
-export default function MainMenu() {
+function MainMenu(props) {
     const { mainMenuActiveBtn, menuBtnPressed } = useContext(Context)
     let buttonNowActive = ''
     let buttonDetailsActive = ''
     let buttonForecastActive = ''
 
-    switch(mainMenuActiveBtn) {
+    console.log(props)
+    switch(props.mainMenuActiveBtn) {
         case 'now':
             buttonNowActive = 'button_active'
             break
@@ -30,22 +32,36 @@ export default function MainMenu() {
         <div className='main-menu'>
             <button 
               className={`main-menu__button button-now ${buttonNowActive}`}
-              onClick={() => showBtnPressed('now')}
+              onClick={() => {
+                    //showBtnPressed('now')
+                    props.dispatch({ type: 'NOW_BTN'})
+                    }}
             >
             Now
             </button>
             <button 
               className={`main-menu__button button-details ${buttonDetailsActive}`}
-              onClick={() => showBtnPressed('details')}
+              onClick={() => {
+                    //showBtnPressed('details')
+                    props.dispatch({ type: 'DETAILS_BTN'})
+                    }}
             >
             Details
             </button>
             <button 
               className={`main-menu__button button-details ${buttonForecastActive}`}
-              onClick={() => showBtnPressed('forecast')}
+              onClick={() => {
+                    //showBtnPressed('forecast')
+                    props.dispatch({ type: 'FORECAST_BTN'})
+                    }}
             >
             Forecast
             </button>
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    mainMenuActiveBtn: state.mainMenuActiveBtn
+})
+export default connect(mapStateToProps)(MainMenu)

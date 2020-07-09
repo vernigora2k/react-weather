@@ -50,12 +50,14 @@ function Weather(props) {
             forecastSeven = 'forecast--active'
     }
 
+    console.log(props)
+
     if(mainMenuActiveBtn === 'now') {
         return (
             <div className='weather'>
                 <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
                 <div className='weather__icon flex'>
-                {props.testRedux} {props.testNeoRedux}
+                {props.testRedux} {'Neo:' + props.testNeoRedux}
                     <div className='weather__icon-description'>{description}</div>
                     <div className='weather__icon-img'>
                         <img 
@@ -157,7 +159,7 @@ function Weather(props) {
 //export default Weather
 
 const mapStateToProps = state => ({
-    testRedux: state.id, 
-    testNeoRedux: state.idNeo
+    mainMenuActiveBtn: state.mainMenuActiveBtn, 
+    // testNeoRedux: state.mainMenuActiveBtnRedux
 })
 export default connect(mapStateToProps)(Weather)
