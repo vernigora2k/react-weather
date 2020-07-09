@@ -26,28 +26,19 @@ function MainMenu(props) {
         <div className='main-menu'>
             <button 
               className={`main-menu__button button-now ${buttonNowActive}`}
-              onClick={() => {
-                    //showBtnPressed('now')
-                    props.dispatch({ type: 'NOW_BTN'})
-                    }}
+              onClick={() => props.dispatch({ type: 'NOW_BTN'})}
             >
             Now
             </button>
             <button 
               className={`main-menu__button button-details ${buttonDetailsActive}`}
-              onClick={() => {
-                    //showBtnPressed('details')
-                    props.dispatch({ type: 'DETAILS_BTN'})
-                    }}
+              onClick={() => props.dispatch({ type: 'DETAILS_BTN'})}
             >
             Details
             </button>
             <button 
               className={`main-menu__button button-details ${buttonForecastActive}`}
-              onClick={() => {
-                    //showBtnPressed('forecast')
-                    props.dispatch({ type: 'FORECAST_BTN'})
-                    }}
+              onClick={() => props.dispatch({ type: 'FORECAST_BTN'})}
             >
             Forecast
             </button>
