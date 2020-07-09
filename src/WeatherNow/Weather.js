@@ -10,6 +10,7 @@ function Weather(props) {
     const [forecastInterval, setForecastInterval] = useState('seven')
     const { searchFormValue, changeTime } = useContext(Context)
     const [state, setState] = useState('')
+    const {mainMenuActiveBtn} = props.mainMenuActiveBtn
     
     let forecastSeven = ''
     let forecastTwoWeeks = ''
@@ -50,9 +51,7 @@ function Weather(props) {
             forecastSeven = 'forecast--active'
     }
 
-    console.log(props)
-
-    if(props.mainMenuActiveBtn === 'now') {
+    if(mainMenuActiveBtn === 'now') {
         return (
             <div className='weather'>
                 <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
@@ -73,7 +72,7 @@ function Weather(props) {
         )
     }
 
-    if(props.mainMenuActiveBtn === 'details') {
+    if(mainMenuActiveBtn === 'details') {
         return (
             <div className='weather flex' style={{justifyContent: 'space-between'}}>
                 <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
@@ -135,7 +134,7 @@ function Weather(props) {
         )
     }
 
-    if(props.mainMenuActiveBtn === 'forecast') {
+    if(mainMenuActiveBtn === 'forecast') {
         return (
             <div className="weather">
                 <div className="media__forecast">
@@ -160,4 +159,5 @@ const mapStateToProps = state => ({
     mainMenuActiveBtn: state.mainMenuActiveBtn, 
     // testNeoRedux: state.mainMenuActiveBtnRedux
 })
+
 export default connect(mapStateToProps)(Weather)

@@ -108,7 +108,6 @@ function App(props) {
                         favoriteNameActive={favoriteNameActive}
                         citiesList={citiesList}>
                         </FavoriteCityList>
-                        <div>testRedux {props.testRedux}</div>
                     </div>
                 </div>
             </div>

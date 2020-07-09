@@ -6,8 +6,9 @@ function MainMenu(props) {
     let buttonNowActive = ''
     let buttonDetailsActive = ''
     let buttonForecastActive = ''
+    const {mainMenuActiveBtn} = props.mainMenuActiveBtn
 
-    switch(props.mainMenuActiveBtn) {
+    switch(mainMenuActiveBtn) {
         case 'now':
             buttonNowActive = 'button_active'
             break
