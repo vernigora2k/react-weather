@@ -21,7 +21,7 @@ function MainMenu(props) {
         default:
             buttonNowActive = 'button_active'
     }
-
+    {console.log(buttonForecastActive)}
     return (
         <div className='main-menu'>
             <button 
@@ -39,7 +39,7 @@ function MainMenu(props) {
             <button 
               className={`main-menu__button button-details ${buttonForecastActive}`}
               //onClick={() => props.dispatch({ type: 'FORECAST_BTN'})}
-              onClick={() => props.dispatch({ type: 'NEW_SEARCH_VALUE'})}
+              onClick={() => props.dispatch({ type: 'NEW_SEARCH_VALUE', payload: 'Hollywood'})}
             >
             Forecast
             </button>
