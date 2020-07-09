@@ -7,16 +7,15 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 const initialState = {
-  id: 233,
-  idNeo: 13
+  mainMenuActiveBtn: 'now',
+  
 }
 
 function reducer(state=initialState, action) {
   switch(action.type) {
-    case 'INCREMENT':
+    case 'NOW_BTN':
       return {
-        id: state.id + 1,
-        idNeo: state.idNeo - 2
+        mainMenuActiveBtn: 'now'
       }
     default: return state
   }
