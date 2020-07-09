@@ -5,7 +5,7 @@ const initialStateMenu = {
 }
 
 function menuReducer(state=initialStateMenu, action) {
-    //console.log(action.type)
+    console.log(action)
     switch(action.type) {
       case 'NOW_BTN':
         return {
@@ -28,6 +28,13 @@ const initialStateSearch = {
 }
 
 function searchFormReducer(state=initialStateSearch, action) {
+  console.log(action)
+  switch(action.type) {
+    case 'NEW_SEARCH_VALUE': 
+      return {
+        ...state, searchFormValue: state.searchFormValue
+      }
+  }
     return state
 }
 

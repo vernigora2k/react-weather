@@ -38,7 +38,8 @@ function MainMenu(props) {
             </button>
             <button 
               className={`main-menu__button button-details ${buttonForecastActive}`}
-              onClick={() => props.dispatch({ type: 'FORECAST_BTN'})}
+              //onClick={() => props.dispatch({ type: 'FORECAST_BTN'})}
+              onClick={() => props.dispatch({ type: 'NEW_SEARCH_VALUE'})}
             >
             Forecast
             </button>
@@ -49,4 +50,5 @@ function MainMenu(props) {
 const mapStateToProps = state => ({
     mainMenuActiveBtn: state.mainMenuActiveBtn
 })
+
 export default connect(mapStateToProps)(MainMenu)

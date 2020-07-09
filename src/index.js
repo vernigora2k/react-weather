@@ -7,10 +7,10 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { rootReducer } from '../src/Redux/rootReducer'
 
-const initialState = {
-  mainMenuActiveBtn: 'now',
-  searchFormValue: 'aktobe'
-}
+// const initialState = {
+//   mainMenuActiveBtn: 'now',
+//   searchFormValue: 'aktobe'
+// }
 
 // function menuReducer(state=initialState, action) {
 //   console.log(action.type)
