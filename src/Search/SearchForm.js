@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import './search.scss'
+import { connect } from 'react-redux'
 
-export default function SearchForm({ searchFormValue, changeInput }) {
+function SearchForm(props, { searchFormValue, changeInput }) {
     let [formValue, setFormValue] = useState(searchFormValue)
 
     function handleChange(event) {
@@ -10,6 +11,7 @@ export default function SearchForm({ searchFormValue, changeInput }) {
     
     function handleSubmit(event) {
         event.preventDefault()
+        props.dispatch({ type: 'NEW_SEARCH_VALUE', payload: 'Bollywood'})
         if (!formValue) {
             return
         }
@@ -33,3 +35,9 @@ export default function SearchForm({ searchFormValue, changeInput }) {
         </form>
     )
 }
+
+const mapStateToProps = state => ({
+    mainMenuActiveBtn: state.mainMenuActiveBtn
+})
+
+export default connect(mapStateToProps)(SearchForm)
