@@ -6,9 +6,8 @@ function MainMenu(props) {
     let buttonNowActive = ''
     let buttonDetailsActive = ''
     let buttonForecastActive = ''
-    const {mainMenuActiveBtn} = props.mainMenuActiveBtn
 
-    switch(mainMenuActiveBtn) {
+    switch(props.mainMenuActiveBtn) {
         case 'now':
             buttonNowActive = 'button_active'
             break
@@ -46,8 +45,8 @@ function MainMenu(props) {
     )
 }
 
-const mapStateToProps = state => ({
-    mainMenuActiveBtn: state.mainMenuActiveBtn
-})
+const mapStateToProps = state => (
+    state.mainMenuActiveBtn
+)
 
 export default connect(mapStateToProps)(MainMenu)

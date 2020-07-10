@@ -80,7 +80,6 @@ function App(props) {
                 <div className='search-body flex'>
                     <div className='search-body__search-form'>
                         <SearchForm
-                        searchFormValue={searchFormValue}
                         changeInput={changeInputValue}>
                         </SearchForm>
                     </div>
