@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import './search.scss'
 import { connect } from 'react-redux'
+import { newSearchValue } from '../Redux/actions'
+import { bindActionCreators } from 'redux'
 
-function SearchForm({ dispatch, searchFormValue, changeInput }) {
+function SearchForm({ searchFormValue, actions, changeInput }) {
     let [formValue, setFormValue] = useState(searchFormValue)
 
     function handleChange(event) {
@@ -11,8 +13,8 @@ function SearchForm({ dispatch, searchFormValue, changeInput }) {
     
     function handleSubmit(event) {
         event.preventDefault()
-        console.log(event.target)
-        dispatch({ type: 'NEW_SEARCH_VALUE', payload: formValue})
+        const newSearchValue = actions(formValue)
+        
         if (!formValue) {
             return
         }
@@ -37,8 +39,14 @@ function SearchForm({ dispatch, searchFormValue, changeInput }) {
     )
 }
 
-const mapStateToProps = state => (
-    state.searchFormValue, state.dispatch
-)
+const mapStateToProps = state => {
+    return state.searchFormValue
+}
 
-export default connect(mapStateToProps)(SearchForm)
+const mapDispatchToProps = dispatch => {
+    return {
+        actions: bindActionCreators(newSearchValue, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm)

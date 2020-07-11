@@ -29,10 +29,11 @@ const initialStateSearch = {
 
 function searchFormReducer(state=initialStateSearch, action) {
   console.log(action)
+  
   switch(action.type) {
     case 'NEW_SEARCH_VALUE': 
       return {
-        ...state, searchFormValue: state.searchFormValue
+        ...state, searchFormValue: action.payload
       }
   }
     return state
