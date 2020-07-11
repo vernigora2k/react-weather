@@ -8,9 +8,12 @@ import { connect } from 'react-redux'
 
 function Weather(props) {
     const [forecastInterval, setForecastInterval] = useState('seven')
-    const { searchFormValue, changeTime } = useContext(Context)
+    const { searchFormValue, changeTime } = useContext(Context)  //searchFormValue can be clean after redux
     const [state, setState] = useState('')
-    const {mainMenuActiveBtn} = props.mainMenuActiveBtn
+    const { mainMenuActiveBtn } = props.mainMenuActiveBtn
+
+    console.log(props.searchFormValue)
+    console.log(searchFormValue)
     
     let forecastSeven = ''
     let forecastTwoWeeks = ''
@@ -18,7 +21,7 @@ function Weather(props) {
     let iconImg = 'c01d'
 
     useEffect(() => {
-        getWeather(searchFormValue)
+        getWeather(props.searchFormValue)
         .then(response => {
             const data = response.data[0]
             setState(data)
@@ -29,7 +32,7 @@ function Weather(props) {
                 .catch('errorHandler')
         })
         .catch('errorHandler')
-    }, [searchFormValue])
+    }, [props.searchFormValue])
 
     if (state.weather) {
         description = state.weather.description
@@ -157,7 +160,7 @@ function Weather(props) {
 
 const mapStateToProps = state => ({
     mainMenuActiveBtn: state.mainMenuActiveBtn, 
-    // testNeoRedux: state.mainMenuActiveBtnRedux
+    searchFormValue: state.searchFormValue.searchFormValue
 })
 
 export default connect(mapStateToProps)(Weather)

@@ -2,13 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import './ForecastPlates.scss'
 import Content from '../context'
 import { getWeather } from '../js/controller'
+import { connect } from 'react-redux'
 
-export default function ForecastPlates(forecastInterval) {
+ function ForecastPlates({ forecastInterval, searchFormValue }) {
     const [state, setState] = useState('')
-    const { searchFormValue } = useContext(Content)
+    //const { searchFormValue } = useContext(Content) //we can be deleted after redux
+    console.log(forecastInterval)
+    console.log(searchFormValue)
     let days
 
-    if(forecastInterval.forecastInterval === 'seven') {
+    if(forecastInterval === 'seven') {
         days = 7
     }   else {
         days = 14
@@ -43,3 +46,9 @@ export default function ForecastPlates(forecastInterval) {
     }
     return (<div></div>)
 }
+
+const mapStateToProps = state => {
+    return state.searchFormValue
+}
+
+export default connect(mapStateToProps)(ForecastPlates)
