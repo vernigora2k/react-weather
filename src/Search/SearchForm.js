@@ -13,11 +13,10 @@ function SearchForm({ searchFormValue, actions, changeInput }) {
     
     function handleSubmit(event) {
         event.preventDefault()
-        const newSearchValue = actions(formValue)
-        
         if (!formValue) {
             return
         }
+        const newSearchValue = actions(formValue.toLowerCase())
         changeInput(formValue.toLowerCase())
     }
 

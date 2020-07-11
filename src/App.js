@@ -55,7 +55,7 @@ function App(props) {
     }
 
     function changeInputValue(response) {
-        setSearchFormValue(response)
+        setSearchFormValue(response)//можно будет удалить при полном переходе на redux
         checkCityInList(response)
     }
     
