@@ -8,12 +8,11 @@ import { connect } from 'react-redux'
 
 function Weather(props) {
     const [forecastInterval, setForecastInterval] = useState('seven')
-    const { searchFormValue, changeTime } = useContext(Context)  //searchFormValue can be clean after redux
+    const { changeTime } = useContext(Context)  //searchFormValue can be clean after redux
     const [state, setState] = useState('')
     const { mainMenuActiveBtn } = props.mainMenuActiveBtn
 
     console.log(props.searchFormValue)
-    console.log(searchFormValue)
     
     let forecastSeven = ''
     let forecastTwoWeeks = ''
