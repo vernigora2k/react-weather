@@ -15,7 +15,6 @@ function App(props) {
 
     console.log(props.searchFormValue)
     const set = new Set()
-    //const [searchFormValue, setSearchFormValue] = useState('aktobe')
     const [favoriteName, setFavoriteName] = useState(props.searchFormValue)
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
@@ -29,7 +28,6 @@ function App(props) {
             })
         }
         if (localStorage.getItem('lastWatchedCity')) {
-            //setSearchFormValue(localStorage.getItem('lastWatchedCity'))
             const searchValueFromStorage = props.actions(localStorage.getItem('lastWatchedCity'))
         }
     }, [])
@@ -60,8 +58,6 @@ function App(props) {
     }
 
     function changeInputValue(response) {
-        //setSearchFormValue(response)//можно будет удалить при полном переходе на redux
-        const newSearchFormValue = props.actions(response) //можно будет удалить при полном переходе на redux
         checkCityInList(response)
     }
     
@@ -75,7 +71,6 @@ function App(props) {
     }
 
     function selectFavoriteCity(city) {
-        //setSearchFormValue(city) //можно будет удалить при полном переходе на redux
         const newSearchFormValue = props.actions(city)
         setFavoriteName(city)
         checkCityInList(city)
