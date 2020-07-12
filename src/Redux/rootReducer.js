@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 
+let initFavoriteName = 'aktobe'
+
 const initialStateMenu = {
     mainMenuActiveBtn: 'now'
 }
@@ -29,6 +31,7 @@ const initialStateSearch = {
 function searchFormReducer(state=initialStateSearch, action) {
   switch(action.type) {
     case 'NEW_SEARCH_VALUE': 
+    initFavoriteName = action.payload
       return {
         ...state, searchFormValue: action.payload
       }
@@ -36,7 +39,25 @@ function searchFormReducer(state=initialStateSearch, action) {
     return state
 }
 
+const initialStateFavoriteName = {
+  favoriteName: initFavoriteName
+}
+
+function favoriteNameReducer(state=initialStateFavoriteName, action) {
+  switch(action.type) {
+    case 'NEW_FAVORITE_NAME':
+      console.log('new favorite name reducer')
+      console.log(action.payload)
+    return {
+      ...state, favoriteName: action.payload
+    }
+  }
+  return state
+}
+
 export const rootReducer = combineReducers({
     mainMenuActiveBtn: menuReducer,
-    searchFormValue: searchFormReducer
+    searchFormValue: searchFormReducer,
+    favoriteName: favoriteNameReducer
+
 })

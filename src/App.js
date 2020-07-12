@@ -74,6 +74,7 @@ function App(props) {
         const newSearchFormValue = props.actions(city)
         setFavoriteName(city)
         checkCityInList(city)
+        console.log(props)
     }
 
     return (
@@ -118,7 +119,8 @@ function App(props) {
 
 const mapStateToProps = state => ({
     mainMenuActiveBtn: state.mainMenuActiveBtn,
-    searchFormValue: state.searchFormValue.searchFormValue
+    searchFormValue: state.searchFormValue.searchFormValue,
+    favoriteName: state.favoriteName
 })
 
 const mapDispatchToProps = dispatch => {
