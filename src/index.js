@@ -7,38 +7,9 @@ import { createStore, compose } from 'redux'
 import { Provider } from 'react-redux'
 import { rootReducer } from '../src/Redux/rootReducer'
 
-// const initialState = {
-//   mainMenuActiveBtn: 'now',
-//   searchFormValue: 'aktobe'
-// }
-
-// function menuReducer(state=initialState, action) {
-//   console.log(action.type)
-//   switch(action.type) {
-//     case 'NOW_BTN':
-//       return {
-//         mainMenuActiveBtn: 'now'
-//       }
-//     case 'DETAILS_BTN':
-//       return {
-//         mainMenuActiveBtn: 'details'
-//       }
-//     case 'FORECAST_BTN':
-//       return {
-//         mainMenuActiveBtn: 'forecast'
-//       }
-//     default: return state
-//   }
-// }
-
-// function searchFormReducer(state=initialState, action) {
-
-// }
-
 const store = createStore(rootReducer, compose(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
-//store.dispatch({ type: 'INCREMENT', amount: 5})
 
 ReactDOM.render(
   <Provider store={store}>

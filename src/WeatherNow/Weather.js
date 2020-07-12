@@ -59,7 +59,6 @@ function Weather(props) {
             <div className='weather'>
                 <div className='weather__temp'>{Math.round(state.temp)}<sup>0</sup></div>
                 <div className='weather__icon flex'>
-                {props.testRedux} {'Neo:' + props.testNeoRedux}
                     <div className='weather__icon-description'>{description}</div>
                     <div className='weather__icon-img'>
                         <img 

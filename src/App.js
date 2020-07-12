@@ -8,11 +8,15 @@ import MainMenu from './Menu/MainMenu'
 import FavoriteCityList from './FovoriteCities/FavoriteCityList'
 import Context from './context'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { newSearchValue } from './Redux/actions'
 
 function App(props) {
+
+    console.log(props.searchFormValue)
     const set = new Set()
-    const [searchFormValue, setSearchFormValue] = useState('aktobe')
-    const [favoriteName, setFavoriteName] = useState(searchFormValue)
+    //const [searchFormValue, setSearchFormValue] = useState('aktobe')
+    const [favoriteName, setFavoriteName] = useState(props.searchFormValue)
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
     const [time, setTime] = useState('local time')
@@ -25,13 +29,14 @@ function App(props) {
             })
         }
         if (localStorage.getItem('lastWatchedCity')) {
-            setSearchFormValue(localStorage.getItem('lastWatchedCity'))
+            //setSearchFormValue(localStorage.getItem('lastWatchedCity'))
+            const searchValueFromStorage = props.actions(localStorage.getItem('lastWatchedCity'))
         }
     }, [])
 
     useEffect(() => {
-            localStorage.setItem('lastWatchedCity', searchFormValue)
-    }, [searchFormValue])
+            localStorage.setItem('lastWatchedCity', props.searchFormValue)
+    }, [props.searchFormValue])
 
     function changeTime(time) {
         setTime(time)
@@ -39,23 +44,24 @@ function App(props) {
 
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
-        setFavoriteName(searchFormValue) 
+        setFavoriteName(props.searchFormValue) 
         addRemoveFavoriteCity() 
     }
 
     function addRemoveFavoriteCity() { 
         if(!favoriteNameActive) {
-            setCitiesList(citiesList.add(searchFormValue.toLowerCase()))
+            setCitiesList(citiesList.add(props.searchFormValue.toLowerCase()))
             localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
         } else {
-            citiesList.delete(searchFormValue)
+            citiesList.delete(props.searchFormValue)
             setCitiesList(citiesList)
             localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
         }
     }
 
     function changeInputValue(response) {
-        setSearchFormValue(response)//можно будет удалить при полном переходе на redux
+        //setSearchFormValue(response)//можно будет удалить при полном переходе на redux
+        const newSearchFormValue = props.actions(response) //можно будет удалить при полном переходе на redux
         checkCityInList(response)
     }
     
@@ -69,13 +75,14 @@ function App(props) {
     }
 
     function selectFavoriteCity(city) {
-        setSearchFormValue(city)
+        //setSearchFormValue(city) //можно будет удалить при полном переходе на redux
+        const newSearchFormValue = props.actions(city)
         setFavoriteName(city)
         checkCityInList(city)
     }
 
     return (
-        <Context.Provider value={{favoriteName, searchFormValue, time, changeTime}}>
+        <Context.Provider value={{favoriteName, time, changeTime}}>
             <div className='wrapper'>
                 <div className='search-body flex'>
                     <div className='search-body__search-form'>
@@ -92,7 +99,7 @@ function App(props) {
                         <div className='main-body__display flex'>
                             <Weather></Weather>
                             <FavoriteCityMenu
-                            searchFormValue={searchFormValue} 
+                            // searchFormValue={searchFormValue} можно будет удалить после redux
                             favoriteNameActive={favoriteNameActive} 
                             onChange={changeFavorite}>
                             </FavoriteCityMenu>
@@ -104,7 +111,7 @@ function App(props) {
                     <div className='main-body__favorite-cities'>
                         <FavoriteCityList 
                         onChangeFavorite={selectFavoriteCity}
-                        favoriteNameActive={favoriteNameActive}
+                        favoriteNameActive={favoriteNameActive}//можно будет попробовать удалить в самом конце. помоему это пропс нигде не использ..
                         citiesList={citiesList}>
                         </FavoriteCityList>
                     </div>
@@ -115,6 +122,14 @@ function App(props) {
 }
 
 const mapStateToProps = state => ({
-    mainMenuActiveBtn: state.mainMenuActiveBtn
+    mainMenuActiveBtn: state.mainMenuActiveBtn,
+    searchFormValue: state.searchFormValue.searchFormValue
 })
-export default connect(mapStateToProps)(App)
+
+const mapDispatchToProps = dispatch => {
+    return {
+        actions: bindActionCreators(newSearchValue, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

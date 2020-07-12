@@ -1,5 +1,6 @@
 import React from 'react'
 import './favorite-city-menu.scss'
+import { connect } from 'react-redux'
 
 function FavoriteCityMenu({ searchFormValue, favoriteNameActive, onChange }) {
     let classes;
@@ -30,4 +31,8 @@ function FavoriteCityMenu({ searchFormValue, favoriteNameActive, onChange }) {
     )
 }
 
-export default FavoriteCityMenu
+const mapStateToProps = state => {
+    return state.searchFormValue
+}
+
+export default connect(mapStateToProps)(FavoriteCityMenu)

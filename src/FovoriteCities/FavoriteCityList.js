@@ -3,7 +3,7 @@ import './favorite-city-list.scss'
 import FavoriteCity from './FavoriteCity'
 
 export default function FavoriteCityList({ citiesList, onChangeFavorite }) {
-    let isCityListEmpty = !!!citiesList.size
+    let isCityListEmpty = !citiesList.size
 
     return (
         <div className='favorite-cities'>
