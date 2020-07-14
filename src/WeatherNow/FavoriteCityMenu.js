@@ -22,9 +22,7 @@ function FavoriteCityMenu({ searchFormValue, favoriteNameActive, onChange }) {
             </div>
             <div 
               className={classes} 
-              onClick={() => {
-                  onChange()
-                  }}
+              onClick={onChange}
             >
             </div>
         </div>

@@ -62,12 +62,8 @@ function App(props) {
     }
     
     function checkCityInList(inputValue) {
-        let isFavoriteCityExist = citiesList.has(inputValue)
-        if(isFavoriteCityExist) {
-            setFavoriteNameActive(true)
-        } else {
-            setFavoriteNameActive(false)
-        }
+        const isFavoriteCityExist = citiesList.has(inputValue)
+        setFavoriteNameActive(isFavoriteCityExist)
     }
 
     function selectFavoriteCity(city) {
@@ -87,13 +83,13 @@ function App(props) {
                         </SearchForm>
                     </div>
                     <div className='search-body__local-time'>
-                        <LocalTime></LocalTime>
+                        <LocalTime/>
                     </div>
                 </div>
                 <div className='main-body flex'>
                     <div className='main-body__media flex'>
                         <div className='main-body__display flex'>
-                            <Weather></Weather>
+                            <Weather/>
                             <FavoriteCityMenu
                             // searchFormValue={searchFormValue} можно будет удалить после redux
                             favoriteNameActive={favoriteNameActive} 
@@ -101,7 +97,7 @@ function App(props) {
                             </FavoriteCityMenu>
                         </div>
                         <div className='main-body__menu'>
-                            <MainMenu></MainMenu>
+                            <MainMenu/>
                         </div>
                     </div>
                     <div className='main-body__favorite-cities'>
