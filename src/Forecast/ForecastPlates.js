@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './ForecastPlates.scss'
-import Content from '../context'
+import Content from '../context' /// can be deleted after redux
 import { getWeather } from '../js/controller'
 import { connect } from 'react-redux'
 
@@ -9,13 +9,8 @@ import { connect } from 'react-redux'
     //const { searchFormValue } = useContext(Content) //we can be deleted after redux
     console.log(forecastInterval)
     console.log(searchFormValue)
-    let days
-
-    if(forecastInterval === 'seven') {
-        days = 7
-    }   else {
-        days = 14
-    }
+    
+    const days = forecastInterval
 
     useEffect(() => {
         getWeather(searchFormValue, 'forecast')

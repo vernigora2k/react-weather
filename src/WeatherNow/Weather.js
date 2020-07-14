@@ -7,15 +7,15 @@ import { checkPropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 
 function Weather(props) {
-    const [forecastInterval, setForecastInterval] = useState('seven')
+    const [forecastInterval, setForecastInterval] = useState(7)
     const { changeTime } = useContext(Context)  //searchFormValue can be clean after redux
     const [state, setState] = useState('')
     const { mainMenuActiveBtn } = props.mainMenuActiveBtn
 
     console.log(props.searchFormValue)
     
-    let forecastSeven = ''
-    let forecastTwoWeeks = ''
+    let forecastSeven
+    let forecastTwoWeeks
     let description
     let iconImg = 'c01d'
 
@@ -43,10 +43,10 @@ function Weather(props) {
     }
 
     switch(forecastInterval) {
-        case 'seven':
+        case 7:
             forecastSeven = 'forecast--active'
             break
-        case 'two-weeks':
+        case 14:
             forecastTwoWeeks = 'forecast--active'
             break
         default:
@@ -141,10 +141,10 @@ function Weather(props) {
                 <div className="media__forecast">
                     <div className="forecast-menu flex">
                         <div className={`forecast-seven ${forecastSeven}`}  style={{ width: 50 +'%', height: 30 +'px' }}>
-                            <button className="seven" onClick={() => showBtnPressed('seven')}>forecast seven</button>
+                            <button className="seven" onClick={() => showBtnPressed(7)}>forecast seven</button>
                         </div>
                         <div className={`forecast-two-weeks ${forecastTwoWeeks}`} style={{ width: 50 +'%', height: 30 +'px' }}>
-                            <button className="two-weeks" onClick={() => showBtnPressed('two-weeks')}>forecast 2 weeks</button>
+                            <button className="two-weeks" onClick={() => showBtnPressed(14)}>forecast 2 weeks</button>
                         </div>
                     </div>
                     <div className="forecast-desk flex">
