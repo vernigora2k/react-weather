@@ -62,7 +62,6 @@ const initialTimeValue = {
 function setTimeReducer(state=initialTimeValue, action) {
   switch(action.type) {
     case 'NEW_LOCAL_TIME':
-      console.log(action.type)
       return {
         ...state, time: action.payload
       }
