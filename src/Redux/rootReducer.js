@@ -55,9 +55,24 @@ function favoriteNameReducer(state=initialStateFavoriteName, action) {
   return state
 }
 
+const initialTimeValue = {
+  time: 'local time'
+}
+
+function setTimeReducer(state=initialTimeValue, action) {
+  switch(action.type) {
+    case 'NEW_LOCAL_TIME':
+      console.log(action.type)
+      return {
+        ...state, time: action.payload
+      }
+  }
+  return state
+}
+
 export const rootReducer = combineReducers({
     mainMenuActiveBtn: menuReducer,
     searchFormValue: searchFormReducer,
-    favoriteName: favoriteNameReducer
-
+    favoriteName: favoriteNameReducer,
+    time: setTimeReducer
 })

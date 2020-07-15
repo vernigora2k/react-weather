@@ -11,3 +11,10 @@ export function newFavoriteName(favoriteName) {
         payload: favoriteName
     }
 }
+
+export function newLocalTime(time) {
+    return {
+        type: 'NEW_LOCAL_TIME',
+        payload: time
+    }
+}
