@@ -1,21 +1,15 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './weather.scss'
-import Context from '../context'
 import { getWeather, getLocalTime } from '../js/controller'
 import ForecastPlates from '../Forecast/ForecastPlates'
-import { checkPropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newLocalTime } from '../Redux/actions'
 
 function Weather({ searchFormValue, mainMenuActiveBtn, localTimeActions }) {
     const [forecastInterval, setForecastInterval] = useState(7)
-    // const { changeTime } = useContext(Context)  //searchFormValue can be clean after redux
     const [state, setState] = useState('')
 
-    console.log(searchFormValue)
-    console.log(mainMenuActiveBtn)
-    
     let description
     let iconImg = 'c01d'
 

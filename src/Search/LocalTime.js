@@ -1,12 +1,17 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './local-time.scss'
-import Context from '../context'
+import { connect } from 'react-redux'
 
-export default function LocalTime() {
-    const { time } = useContext(Context)
+function LocalTime({time}) {
     return (
         <div className='local-time'>
             <span className='time'>{time}</span>
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    time: state.time.time
+})
+
+export default connect(mapStateToProps)(LocalTime)

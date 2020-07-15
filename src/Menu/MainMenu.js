@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './main-menu.scss'
 import { connect } from 'react-redux'
 
-function MainMenu({mainMenuActiveBtn, dispatch}) {
+function MainMenu({ mainMenuActiveBtn, dispatch }) {
 
     const checkButtonActive = button => mainMenuActiveBtn === button ? 'button_active' : ''
 

@@ -6,18 +6,14 @@ import Weather from './WeatherNow/Weather'
 import FavoriteCityMenu from './WeatherNow/FavoriteCityMenu'
 import MainMenu from './Menu/MainMenu'
 import FavoriteCityList from './FovoriteCities/FavoriteCityList'
-import Context from './context'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newSearchValue, newFavoriteName, newLocalTime } from './Redux/actions'
 
-function App({ mainMenuActiveBtn, searchFormValue, favoriteName, searchValueActions, favoriteNameActions }) {
-
-    
+function App({ searchFormValue, searchValueActions, favoriteNameActions }) {
     const set = new Set()
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
-    // const [time, setTime] = useState('local time')
 
     useEffect(() => {
         if (localStorage.getItem('citiesList')) {
@@ -34,10 +30,6 @@ function App({ mainMenuActiveBtn, searchFormValue, favoriteName, searchValueActi
     useEffect(() => {
             localStorage.setItem('lastWatchedCity', searchFormValue)
     }, [searchFormValue])
-
-    // function changeTime(time) {
-    //     setTime(time)
-    // }
 
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
@@ -70,51 +62,44 @@ function App({ mainMenuActiveBtn, searchFormValue, favoriteName, searchValueActi
         favoriteNameActions(city)
     }
 
-    return (
-        //<Context.Provider value={{ time, changeTime}}>
-        <Context.Provider value={{ }}>
-            <div className='wrapper'>
-                <div className='search-body flex'>
-                    <div className='search-body__search-form'>
-                        <SearchForm
-                        changeInput={changeInputValue}>
-                        </SearchForm>
-                    </div>
-                    <div className='search-body__local-time'>
-                        <LocalTime/>
-                    </div>
+return (
+        <div className='wrapper'>
+            <div className='search-body flex'>
+                <div className='search-body__search-form'>
+                    <SearchForm
+                    changeInput={changeInputValue}>
+                    </SearchForm>
                 </div>
-                <div className='main-body flex'>
-                    <div className='main-body__media flex'>
-                        <div className='main-body__display flex'>
-                            <Weather/>
-                            <FavoriteCityMenu
-                            // searchFormValue={searchFormValue} можно будет удалить после redux
-                            favoriteNameActive={favoriteNameActive} 
-                            onChange={changeFavorite}>
-                            </FavoriteCityMenu>
-                        </div>
-                        <div className='main-body__menu'>
-                            <MainMenu/>
-                        </div>
-                    </div>
-                    <div className='main-body__favorite-cities'>
-                        <FavoriteCityList 
-                        onChangeFavorite={selectFavoriteCity}
-                        favoriteNameActive={favoriteNameActive}//можно будет попробовать удалить в самом конце. помоему это пропс нигде не использ..
-                        citiesList={citiesList}>
-                        </FavoriteCityList>
-                    </div>
+                <div className='search-body__local-time'>
+                    <LocalTime/>
                 </div>
             </div>
-        </Context.Provider>
+            <div className='main-body flex'>
+                <div className='main-body__media flex'>
+                    <div className='main-body__display flex'>
+                        <Weather/>
+                        <FavoriteCityMenu
+                        favoriteNameActive={favoriteNameActive} 
+                        onChange={changeFavorite}>
+                        </FavoriteCityMenu>
+                    </div>
+                    <div className='main-body__menu'>
+                        <MainMenu/>
+                    </div>
+                </div>
+                <div className='main-body__favorite-cities'>
+                    <FavoriteCityList 
+                    onChangeFavorite={selectFavoriteCity}
+                    citiesList={citiesList}>
+                    </FavoriteCityList>
+                </div>
+            </div>
+        </div>
     )
 }
 
 const mapStateToProps = state => ({
-    mainMenuActiveBtn: state.mainMenuActiveBtn,
     searchFormValue: state.searchFormValue.searchFormValue,
-    favoriteName: state.favoriteName,
     time: state.time
 })
 

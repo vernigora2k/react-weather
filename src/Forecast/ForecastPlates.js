@@ -1,15 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './ForecastPlates.scss'
-import Content from '../context' /// can be deleted after redux
 import { getWeather } from '../js/controller'
 import { connect } from 'react-redux'
 
  function ForecastPlates({ forecastInterval, searchFormValue }) {
     const [state, setState] = useState('')
-    //const { searchFormValue } = useContext(Content) //we can be deleted after redux
-    console.log(forecastInterval)
-    console.log(searchFormValue)
-    
     const days = forecastInterval
 
     useEffect(() => {
