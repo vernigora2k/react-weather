@@ -33,18 +33,18 @@ function App({ searchFormValue, searchValueActions, favoriteNameActions }) {
 
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
-        addRemoveFavoriteCity() 
+        !favoriteNameActive ? addFavoriteCity() : removeFavoriteCity()
     }
 
-    function addRemoveFavoriteCity() { 
-        if(!favoriteNameActive) {
-            setCitiesList(citiesList.add(searchFormValue.toLowerCase()))
-            localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
-        } else {
+    function addFavoriteCity() {
+        setCitiesList(citiesList.add(searchFormValue.toLowerCase()))
+        localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
+    }
+
+    function removeFavoriteCity() {
             citiesList.delete(searchFormValue)
             setCitiesList(citiesList)
             localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
-        }
     }
 
     function changeInputValue(response) {
