@@ -42,16 +42,7 @@ function Weather({ searchFormValue, mainMenuActiveBtn }) {
         setForecastInterval(interval)
     }
 
-    switch(forecastInterval) {
-        case 7:
-            forecastSeven = 'forecast--active'
-            break
-        case 14:
-            forecastTwoWeeks = 'forecast--active'
-            break
-        default:
-            forecastSeven = 'forecast--active'
-    }
+    forecastInterval === 7 ? forecastSeven = 'forecast--active' : forecastTwoWeeks = 'forecast--active'
 
     if(mainMenuActiveBtn === 'now') {
         return (
