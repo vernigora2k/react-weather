@@ -35,8 +35,9 @@ function searchFormReducer(state=initialStateSearch, action) {
       return {
         ...state, searchFormValue: action.payload
       }
+    default:
+      return state
   }
-    return state
 }
 
 const initialStateFavoriteName = {
@@ -46,13 +47,12 @@ const initialStateFavoriteName = {
 function favoriteNameReducer(state=initialStateFavoriteName, action) {
   switch(action.type) {
     case 'NEW_FAVORITE_NAME':
-      console.log('new favorite name reducer')
-      console.log(action.payload)
-    return {
-      ...state, favoriteName: action.payload
-    }
+      return {
+        ...state, favoriteName: action.payload
+      }
+    default: 
+      return state
   }
-  return state
 }
 
 const initialTimeValue = {
@@ -65,8 +65,9 @@ function setTimeReducer(state=initialTimeValue, action) {
       return {
         ...state, time: action.payload
       }
+    default:
+      return state
   }
-  return state
 }
 
 export const rootReducer = combineReducers({
