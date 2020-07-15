@@ -5,10 +5,12 @@ import { getWeather, getLocalTime } from '../js/controller'
 import ForecastPlates from '../Forecast/ForecastPlates'
 import { checkPropTypes } from 'prop-types'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { newLocalTime } from '../Redux/actions'
 
-function Weather({ searchFormValue, mainMenuActiveBtn }) {
+function Weather({ searchFormValue, mainMenuActiveBtn, localTimeActions }) {
     const [forecastInterval, setForecastInterval] = useState(7)
-    const { changeTime } = useContext(Context)  //searchFormValue can be clean after redux
+    // const { changeTime } = useContext(Context)  //searchFormValue can be clean after redux
     const [state, setState] = useState('')
 
     console.log(searchFormValue)
@@ -24,7 +26,7 @@ function Weather({ searchFormValue, mainMenuActiveBtn }) {
             setState(data)
             getLocalTime(data.timezone)
                 .then(response => {
-                    changeTime(response.datetime.slice(11,16))
+                    localTimeActions(response.datetime.slice(11,16))
                 })
                 .catch('errorHandler')
         })
@@ -152,7 +154,14 @@ function Weather({ searchFormValue, mainMenuActiveBtn }) {
 
 const mapStateToProps = state => ({
     mainMenuActiveBtn: state.mainMenuActiveBtn.mainMenuActiveBtn, 
-    searchFormValue: state.searchFormValue.searchFormValue
+    searchFormValue: state.searchFormValue.searchFormValue,
+    time: state.time
 })
 
-export default connect(mapStateToProps)(Weather)
+const mapDispatchToProps = dispatch => {
+    return {
+        localTimeActions: bindActionCreators(newLocalTime, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Weather)

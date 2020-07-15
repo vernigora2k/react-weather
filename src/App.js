@@ -9,7 +9,7 @@ import FavoriteCityList from './FovoriteCities/FavoriteCityList'
 import Context from './context'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { newSearchValue, newFavoriteName } from './Redux/actions'
+import { newSearchValue, newFavoriteName, newLocalTime } from './Redux/actions'
 
 function App({ mainMenuActiveBtn, searchFormValue, favoriteName, searchValueActions, favoriteNameActions }) {
 
@@ -17,7 +17,7 @@ function App({ mainMenuActiveBtn, searchFormValue, favoriteName, searchValueActi
     const set = new Set()
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
-    const [time, setTime] = useState('local time')
+    // const [time, setTime] = useState('local time')
 
     useEffect(() => {
         if (localStorage.getItem('citiesList')) {
@@ -35,9 +35,9 @@ function App({ mainMenuActiveBtn, searchFormValue, favoriteName, searchValueActi
             localStorage.setItem('lastWatchedCity', searchFormValue)
     }, [searchFormValue])
 
-    function changeTime(time) {
-        setTime(time)
-    }
+    // function changeTime(time) {
+    //     setTime(time)
+    // }
 
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
@@ -71,7 +71,8 @@ function App({ mainMenuActiveBtn, searchFormValue, favoriteName, searchValueActi
     }
 
     return (
-        <Context.Provider value={{ time, changeTime}}>
+        //<Context.Provider value={{ time, changeTime}}>
+        <Context.Provider value={{ }}>
             <div className='wrapper'>
                 <div className='search-body flex'>
                     <div className='search-body__search-form'>
@@ -113,13 +114,15 @@ function App({ mainMenuActiveBtn, searchFormValue, favoriteName, searchValueActi
 const mapStateToProps = state => ({
     mainMenuActiveBtn: state.mainMenuActiveBtn,
     searchFormValue: state.searchFormValue.searchFormValue,
-    favoriteName: state.favoriteName
+    favoriteName: state.favoriteName,
+    time: state.time
 })
 
 const mapDispatchToProps = dispatch => {
     return {
         searchValueActions: bindActionCreators(newSearchValue, dispatch),
-        favoriteNameActions: bindActionCreators(newFavoriteName, dispatch)
+        favoriteNameActions: bindActionCreators(newFavoriteName, dispatch),
+        localTimeActions: bindActionCreators(newLocalTime, dispatch)
     }
 }
 
