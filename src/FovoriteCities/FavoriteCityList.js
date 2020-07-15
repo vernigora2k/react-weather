@@ -13,8 +13,8 @@ export default function FavoriteCityList({ citiesList, onChangeFavorite }) {
             <div className='favorite-cities__list flex'>
                 {isCityListEmpty 
                     ? undefined 
-                    : ([...citiesList].map((city,i) => {
-                        return <FavoriteCity city={city} key={i} changeFavoriteName={onChangeFavorite}></FavoriteCity>
+                    : ([...citiesList].map(city => {
+                        return <FavoriteCity city={city} key={city} changeFavoriteName={onChangeFavorite}></FavoriteCity>
                       }))
                 }
             </div>

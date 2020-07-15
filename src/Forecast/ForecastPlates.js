@@ -37,9 +37,9 @@ import { connect } from 'react-redux'
                 )
             }
         });
-        return (plates)
+        return plates
     }
-    return (<div></div>)
+    return null
 }
 
 const mapStateToProps = state => {

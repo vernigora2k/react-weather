@@ -6,12 +6,8 @@ export default function FavoriteCity({ city, changeFavoriteName }) {
     const { favoriteName } = useContext(Context)
     let isFavoriteCityPressed
 
-    if(favoriteName === city) {
-        isFavoriteCityPressed = true
-    } else {
-        isFavoriteCityPressed = false
-    }
-    
+    isFavoriteCityPressed = favoriteName === city
+
     const favoriteCity = classNames({
         'favorite-city': true,
         'favorite-city_pressed': isFavoriteCityPressed
@@ -24,7 +20,7 @@ export default function FavoriteCity({ city, changeFavoriteName }) {
     return (
         <div 
           className={favoriteCity}
-          onClick={() => showFavoriteCityPressed()}>
+          onClick={showFavoriteCityPressed}>
             <span>{city}</span>
         </div>
     )

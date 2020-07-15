@@ -7,8 +7,8 @@ import { bindActionCreators } from 'redux'
 function SearchForm({ searchFormValue, actions, changeInput }) {
     let [formValue, setFormValue] = useState(searchFormValue)
 
-    function handleChange(event) {
-        setFormValue(event.target.value)
+    function handleChange({ target }) {
+        setFormValue(target.value)
     }
     
     function handleSubmit(event) {
@@ -16,7 +16,7 @@ function SearchForm({ searchFormValue, actions, changeInput }) {
         if (!formValue) {
             return
         }
-        const newSearchValue = actions(formValue.toLowerCase())
+        actions(formValue.toLowerCase())
         changeInput(formValue.toLowerCase())
     }
 
@@ -25,7 +25,7 @@ function SearchForm({ searchFormValue, actions, changeInput }) {
             <input 
               className='search-form__input' 
               type='text'
-              placeholder='Aktobe' 
+              placeholder='example: Aktobe' 
               value={formValue}
               onChange={handleChange}>
             </input>
