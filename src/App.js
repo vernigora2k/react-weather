@@ -9,7 +9,7 @@ import FavoriteCityList from './FovoriteCities/FavoriteCityList'
 import Context from './context'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { newSearchValue } from './Redux/actions'
+import { newSearchValue, newFavoriteName } from './Redux/actions'
 
 function App(props) {
 
@@ -46,8 +46,6 @@ function App(props) {
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
         setFavoriteName(props.searchFormValue) 
-        //=============================================================================================
-        // actions()
         addRemoveFavoriteCity() 
     }
 
@@ -75,7 +73,7 @@ function App(props) {
         props.searchValueActions(city)
         setFavoriteName(city)
         checkCityInList(city)
-        console.log(props)
+        props.favoriteNameActions(city)
     }
 
     return (
@@ -127,7 +125,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return {
         searchValueActions: bindActionCreators(newSearchValue, dispatch),
-        favoriteNameActions: bindActionCreators(newSearchValue, dispatch)
+        favoriteNameActions: bindActionCreators(newFavoriteName, dispatch)
     }
 }
 
