@@ -6,13 +6,13 @@ import ForecastPlates from '../Forecast/ForecastPlates'
 import { checkPropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 
-function Weather(props) {
+function Weather({ searchFormValue, mainMenuActiveBtn }) {
     const [forecastInterval, setForecastInterval] = useState(7)
     const { changeTime } = useContext(Context)  //searchFormValue can be clean after redux
     const [state, setState] = useState('')
-    const { mainMenuActiveBtn } = props.mainMenuActiveBtn
 
-    console.log(props.searchFormValue)
+    console.log(searchFormValue)
+    console.log(mainMenuActiveBtn)
     
     let forecastSeven
     let forecastTwoWeeks
@@ -20,7 +20,7 @@ function Weather(props) {
     let iconImg = 'c01d'
 
     useEffect(() => {
-        getWeather(props.searchFormValue)
+        getWeather(searchFormValue)
         .then(response => {
             const data = response.data[0]
             setState(data)
@@ -31,7 +31,7 @@ function Weather(props) {
                 .catch('errorHandler')
         })
         .catch('errorHandler')
-    }, [props.searchFormValue])
+    }, [searchFormValue])
 
     if (state.weather) {
         description = state.weather.description
@@ -154,10 +154,11 @@ function Weather(props) {
             </div>
         )
     }
+    return null
 }
 
 const mapStateToProps = state => ({
-    mainMenuActiveBtn: state.mainMenuActiveBtn, 
+    mainMenuActiveBtn: state.mainMenuActiveBtn.mainMenuActiveBtn, 
     searchFormValue: state.searchFormValue.searchFormValue
 })
 
