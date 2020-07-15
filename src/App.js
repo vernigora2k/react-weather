@@ -11,17 +11,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { newSearchValue, newFavoriteName } from './Redux/actions'
 
-function App(props) {
+function App({ mainMenuActiveBtn, searchFormValue, favoriteName, searchValueActions, favoriteNameActions }) {
 
     
     const set = new Set()
-    const [favoriteName, setFavoriteName] = useState(props.searchFormValue)
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
     const [time, setTime] = useState('local time')
-
-    console.log(props.favoriteName)
-    console.log(favoriteName)
 
     useEffect(() => {
         if (localStorage.getItem('citiesList')) {
@@ -31,13 +27,13 @@ function App(props) {
             })
         }
         if (localStorage.getItem('lastWatchedCity')) {
-            const searchValueFromStorage = props.searchValueActions(localStorage.getItem('lastWatchedCity'))
+            searchValueActions(localStorage.getItem('lastWatchedCity'))
         }
     }, [])
 
     useEffect(() => {
-            localStorage.setItem('lastWatchedCity', props.searchFormValue)
-    }, [props.searchFormValue])
+            localStorage.setItem('lastWatchedCity', searchFormValue)
+    }, [searchFormValue])
 
     function changeTime(time) {
         setTime(time)
@@ -45,16 +41,15 @@ function App(props) {
 
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
-        setFavoriteName(props.searchFormValue) 
         addRemoveFavoriteCity() 
     }
 
     function addRemoveFavoriteCity() { 
         if(!favoriteNameActive) {
-            setCitiesList(citiesList.add(props.searchFormValue.toLowerCase()))
+            setCitiesList(citiesList.add(searchFormValue.toLowerCase()))
             localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
         } else {
-            citiesList.delete(props.searchFormValue)
+            citiesList.delete(searchFormValue)
             setCitiesList(citiesList)
             localStorage.setItem('citiesList', JSON.stringify([...citiesList]))
         }
@@ -70,14 +65,13 @@ function App(props) {
     }
 
     function selectFavoriteCity(city) {
-        props.searchValueActions(city)
-        setFavoriteName(city)
+        searchValueActions(city)
         checkCityInList(city)
-        props.favoriteNameActions(city)
+        favoriteNameActions(city)
     }
 
     return (
-        <Context.Provider value={{favoriteName, time, changeTime}}>
+        <Context.Provider value={{ time, changeTime}}>
             <div className='wrapper'>
                 <div className='search-body flex'>
                     <div className='search-body__search-form'>

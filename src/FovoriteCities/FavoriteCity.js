@@ -1,12 +1,10 @@
 import React, { useContext } from 'react'
 import classNames from 'classnames'
-import Context from '../context'
+import { connect } from 'react-redux'
 
-export default function FavoriteCity({ city, changeFavoriteName }) {
-    const { favoriteName } = useContext(Context)
-    let isFavoriteCityPressed
+function FavoriteCity({ city, changeFavoriteName, favoriteName }) {
 
-    isFavoriteCityPressed = favoriteName === city
+    const isFavoriteCityPressed = favoriteName === city
 
     const favoriteCity = classNames({
         'favorite-city': true,
@@ -25,3 +23,9 @@ export default function FavoriteCity({ city, changeFavoriteName }) {
         </div>
     )
 }
+
+const mapStateToProps = state => {
+    return state.favoriteName
+}
+
+export default connect(mapStateToProps)(FavoriteCity)
