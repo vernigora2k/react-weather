@@ -42,8 +42,6 @@ function Weather({ searchFormValue, mainMenuActiveBtn }) {
         setForecastInterval(interval)
     }
 
-    forecastInterval === 7 ? forecastSeven = 'forecast--active' : forecastTwoWeeks = 'forecast--active'
-
     if(mainMenuActiveBtn === 'now') {
         return (
             <div className='weather'>
@@ -131,10 +129,16 @@ function Weather({ searchFormValue, mainMenuActiveBtn }) {
             <div className="weather">
                 <div className="media__forecast">
                     <div className="forecast-menu flex">
-                        <div className={`forecast-seven ${forecastSeven}`}  style={{ width: 50 +'%', height: 30 +'px' }}>
+                        <div 
+                            className={`forecast-seven ${forecastInterval === 7 ? 'forecast--active' : ''}`}  
+                            style={{ width: 50 +'%', height: 30 +'px' }}
+                        >
                             <button className="seven" onClick={() => showBtnPressed(7)}>forecast seven</button>
                         </div>
-                        <div className={`forecast-two-weeks ${forecastTwoWeeks}`} style={{ width: 50 +'%', height: 30 +'px' }}>
+                        <div 
+                            className={`forecast-two-weeks ${forecastInterval === 14 ? 'forecast--active' : ''}`} 
+                            style={{ width: 50 +'%', height: 30 +'px' }}
+                        >
                             <button className="two-weeks" onClick={() => showBtnPressed(14)}>forecast 2 weeks</button>
                         </div>
                     </div>
