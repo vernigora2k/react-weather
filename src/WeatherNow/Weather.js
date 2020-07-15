@@ -14,8 +14,6 @@ function Weather({ searchFormValue, mainMenuActiveBtn }) {
     console.log(searchFormValue)
     console.log(mainMenuActiveBtn)
     
-    let forecastSeven
-    let forecastTwoWeeks
     let description
     let iconImg = 'c01d'
 

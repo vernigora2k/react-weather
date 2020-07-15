@@ -4,3 +4,10 @@ export function newSearchValue(formValue) {
         payload: formValue
     }
 }
+
+export function newFavoriteName(favoriteName) {
+    return {
+        type: 'NEW_FAVORITE_NAME',
+        payload: favoriteName
+    }
+}

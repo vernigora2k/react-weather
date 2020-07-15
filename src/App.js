@@ -13,12 +13,15 @@ import { newSearchValue } from './Redux/actions'
 
 function App(props) {
 
-    console.log(props.searchFormValue)
+    
     const set = new Set()
     const [favoriteName, setFavoriteName] = useState(props.searchFormValue)
     const [favoriteNameActive, setFavoriteNameActive] = useState(false)
     const [citiesList, setCitiesList] = useState(set)
     const [time, setTime] = useState('local time')
+
+    console.log(props.favoriteName)
+    console.log(favoriteName)
 
     useEffect(() => {
         if (localStorage.getItem('citiesList')) {
@@ -28,7 +31,7 @@ function App(props) {
             })
         }
         if (localStorage.getItem('lastWatchedCity')) {
-            const searchValueFromStorage = props.actions(localStorage.getItem('lastWatchedCity'))
+            const searchValueFromStorage = props.searchValueActions(localStorage.getItem('lastWatchedCity'))
         }
     }, [])
 
@@ -43,6 +46,8 @@ function App(props) {
     function changeFavorite() {
         setFavoriteNameActive((data) => !(data))
         setFavoriteName(props.searchFormValue) 
+        //=============================================================================================
+        // actions()
         addRemoveFavoriteCity() 
     }
 
@@ -67,7 +72,7 @@ function App(props) {
     }
 
     function selectFavoriteCity(city) {
-        const newSearchFormValue = props.actions(city)
+        props.searchValueActions(city)
         setFavoriteName(city)
         checkCityInList(city)
         console.log(props)
@@ -121,7 +126,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        actions: bindActionCreators(newSearchValue, dispatch)
+        searchValueActions: bindActionCreators(newSearchValue, dispatch),
+        favoriteNameActions: bindActionCreators(newSearchValue, dispatch)
     }
 }
 
