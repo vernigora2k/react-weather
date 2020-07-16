@@ -27,7 +27,19 @@ function Weather({ searchFormValue, mainMenuActiveBtn, localTimeActions }) {
         .catch('errorHandler')
     }, [searchFormValue])
 
-    
+    // useEffect(() => {
+    //     return {
+    //         type: 'REQUEST_WEATHER', 
+    //         payload: "searchFormValue"
+    //     }
+    // }, [searchFormValue])
+
+    // const requestWeather = () => {
+    //     return {
+    //         type: 'NEW_SEARCH_VALUE', 
+    //         payload: "searchFormValue"
+    //     }
+    // }
 
 
     if (state.weather) {
