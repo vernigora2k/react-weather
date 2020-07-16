@@ -27,6 +27,9 @@ function Weather({ searchFormValue, mainMenuActiveBtn, localTimeActions }) {
         .catch('errorHandler')
     }, [searchFormValue])
 
+    
+
+
     if (state.weather) {
         description = state.weather.description
         iconImg = state.weather.icon
