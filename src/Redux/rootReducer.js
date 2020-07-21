@@ -56,6 +56,27 @@ function favoriteNameReducer(state=initialStateFavoriteName, action) {
   }
 }
 
+
+
+//нужно изменить в везе.джес локал стейт на редакс, 
+//а потом уже можно пробовать переделывать на сагу аякс запрос по погоде
+const initialDataState = {}
+
+function weatherDataReducer(state=initialDataState, action) {
+  switch(action.type) {
+    case 'NEW_WEATHER_DATA': 
+      return {
+        ...state, data: action.payload
+      }
+    default:
+      return state
+  }
+}
+
+
+
+
+
 const initialTimeValue = {
   time: 'local time'
 }
