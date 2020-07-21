@@ -6,19 +6,13 @@ export function* sagaWatcher() {
     yield takeEvery('NEW_SAGAS_TIME', sagaWorker)
 }
 
-function* fetchData(region) {
+function fetchData(region) {
     return getLocalTime(region)
+        .then()
 }
 
 function* sagaWorker({payload: timeZone}) {
-    const response = yield call(fetchData, timeZone)
+    const { datetime } = yield call(fetchData, timeZone)
 
-    yield put(newLocalTime('datetime'))  //мне нужно этот datetime  достать из промиса .....
-    
-    console.log(response)
+    yield put(newLocalTime(datetime.slice(11,16)))
 }
-
-// function* fetchData() {
-//     return fetch('https://jsonplaceholder.typicode.com/todos/1')
-//         .then(response => response.json()) 
-// }
