@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { actionChannel } from 'redux-saga/effects'
 
 let initFavoriteName = 'aktobe'
 

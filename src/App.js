@@ -8,7 +8,7 @@ import MainMenu from './Menu/MainMenu'
 import FavoriteCityList from './FovoriteCities/FavoriteCityList'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { newSearchValue, newFavoriteName, newLocalTime } from './Redux/actions'
+import { newSearchValue, newFavoriteName } from './Redux/actions'
 
 function App({ searchFormValue, searchValueActions, favoriteNameActions }) {
     const set = new Set()
@@ -107,7 +107,6 @@ const mapDispatchToProps = dispatch => {
     return {
         searchValueActions: bindActionCreators(newSearchValue, dispatch),
         favoriteNameActions: bindActionCreators(newFavoriteName, dispatch),
-        localTimeActions: bindActionCreators(newLocalTime, dispatch)
     }
 }
 

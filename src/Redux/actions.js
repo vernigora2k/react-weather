@@ -18,3 +18,10 @@ export function newLocalTime(time) {
         payload: time
     }
 }
+
+export function timeSagas(time) {
+    return {
+        type: 'NEW_SAGAS_TIME',
+        payload: time
+    }
+}

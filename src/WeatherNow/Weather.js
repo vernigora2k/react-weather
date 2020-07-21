@@ -4,9 +4,9 @@ import { getWeather, getLocalTime } from '../js/controller'
 import ForecastPlates from '../Forecast/ForecastPlates'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { newLocalTime } from '../Redux/actions'
+import { newLocalTime, timeSagas } from '../Redux/actions'
 
-function Weather({ searchFormValue, mainMenuActiveBtn, localTimeActions }) {
+function Weather({ searchFormValue, mainMenuActiveBtn, localTimeActions, timeActions }) {
     const [forecastInterval, setForecastInterval] = useState(7)
     const [state, setState] = useState('')
 
@@ -18,14 +18,33 @@ function Weather({ searchFormValue, mainMenuActiveBtn, localTimeActions }) {
         .then(response => {
             const data = response.data[0]
             setState(data)
-            getLocalTime(data.timezone)
-                .then(response => {
-                    localTimeActions(response.datetime.slice(11,16))
-                })
-                .catch('errorHandler')
+            // getLocalTime(data.timezone)
+            //     .then(response => {
+            //         //localTimeActions(response.datetime.slice(11,16)),
+            //         timeActions(response.datetime.slice(11,16))
+            //     })
+            //     .catch('errorHandler')
+
+            timeActions(data.timezone)
+
+
         })
         .catch('errorHandler')
     }, [searchFormValue])
+
+    // useEffect(() => {
+    //     getWeather(searchFormValue)
+    //     .then(response => {
+    //         const data = response.data[0]
+    //         setState(data)
+    //         getLocalTime(data.timezone)
+    //             .then(response => {
+    //                 localTimeActions(response.datetime.slice(11,16))
+    //             })
+    //             .catch('errorHandler')
+    //     })
+    //     .catch('errorHandler')
+    // }, [searchFormValue])
 
     // useEffect(() => {
     //     return {
@@ -169,7 +188,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
     return {
-        localTimeActions: bindActionCreators(newLocalTime, dispatch)
+        localTimeActions: bindActionCreators(newLocalTime, dispatch),
+        timeActions: bindActionCreators(timeSagas, dispatch)
     }
 }
 
