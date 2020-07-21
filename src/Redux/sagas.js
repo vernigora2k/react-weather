@@ -3,7 +3,7 @@ import { newLocalTime } from './actions'
 import { getLocalTime } from '../js/controller'
 
 export function* sagaWatcher() {
-    yield takeEvery('NEW_SAGAS_TIME', sagaWorker)
+    yield takeEvery('NEW_LOCAL_TIME', sagaWorker)
 }
 
 function fetchData(region) {
