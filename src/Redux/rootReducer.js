@@ -96,5 +96,6 @@ export const rootReducer = combineReducers({
     mainMenuActiveBtn: menuReducer,
     searchFormValue: searchFormReducer,
     favoriteName: favoriteNameReducer,
-    time: setTimeReducer
+    time: setTimeReducer,
+    weatherData: weatherDataReducer
 })
