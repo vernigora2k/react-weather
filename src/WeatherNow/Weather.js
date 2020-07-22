@@ -3,7 +3,7 @@ import './weather.scss'
 import { getWeather } from '../js/controller'
 import ForecastPlates from '../Forecast/ForecastPlates'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+import { bindActionCreators, compose } from 'redux'
 import { timeSagas, newWeatherData } from '../Redux/actions'
 
 function Weather({ searchFormValue, mainMenuActiveBtn, timeActions, newDataActions, weatherData }) {
@@ -20,14 +20,15 @@ function Weather({ searchFormValue, mainMenuActiveBtn, timeActions, newDataActio
             setState(data)
             // console.log(data)
             newDataActions(data)
-            console.log(weatherData.data)
+            //console.log(weatherData.data)
             
             timeActions(data.timezone)
         })
         .catch('errorHandler')
     }, [searchFormValue])
 
-    if (state.weather) {
+    if (weatherData.data) {
+        console.log(weatherData.data)
         description = state.weather.description
         iconImg = state.weather.icon
     }
