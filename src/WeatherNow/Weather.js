@@ -18,6 +18,7 @@ function Weather({ searchFormValue, mainMenuActiveBtn, timeActions }) {
         .then(response => {
             const data = response.data[0]
             setState(data)
+            
             timeActions(data.timezone)
         })
         .catch('errorHandler')
