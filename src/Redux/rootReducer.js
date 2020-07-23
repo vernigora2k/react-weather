@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import { actionChannel } from 'redux-saga/effects'
-
+import { NEW_SEARCH_VALUE, NEW_FAVORITE_NAME, NEW_WEATHER_DATA, NEW_LOCAL_TIME } from './actions'
+const NOW_BTN = 'NOW_BTN'
+const DETAILS_BTN = 'DETAILS_BTN'
+const FORECAST_BTN = 'FORECAST_BTN'
 let initFavoriteName = 'aktobe'
 
 const initialStateMenu = {
@@ -9,15 +11,15 @@ const initialStateMenu = {
 
 function menuReducer(state=initialStateMenu, action) {
     switch(action.type) {
-      case 'NOW_BTN':
+      case NOW_BTN:
         return {
           mainMenuActiveBtn: 'now'
         }
-      case 'DETAILS_BTN':
+      case DETAILS_BTN:
         return {
           mainMenuActiveBtn: 'details'
         }
-      case 'FORECAST_BTN':
+      case FORECAST_BTN:
         return {
           mainMenuActiveBtn: 'forecast'
         }
@@ -31,7 +33,7 @@ const initialStateSearch = {
 
 function searchFormReducer(state=initialStateSearch, action) {
   switch(action.type) {
-    case 'NEW_SEARCH_VALUE': 
+    case NEW_SEARCH_VALUE: 
     initFavoriteName = action.payload
       return {
         ...state, searchFormValue: action.payload
@@ -47,7 +49,7 @@ const initialStateFavoriteName = {
 
 function favoriteNameReducer(state=initialStateFavoriteName, action) {
   switch(action.type) {
-    case 'NEW_FAVORITE_NAME':
+    case NEW_FAVORITE_NAME:
       return {
         ...state, favoriteName: action.payload
       }
@@ -56,10 +58,6 @@ function favoriteNameReducer(state=initialStateFavoriteName, action) {
   }
 }
 
-
-
-//нужно изменить в везе.джес локал стейт на редакс, 
-//а потом уже можно пробовать переделывать на сагу аякс запрос по погоде
 const initialDataState = {
   data: {
     temp: 18, 
@@ -75,7 +73,7 @@ const initialDataState = {
 
 function weatherDataReducer(state=initialDataState, action) {
   switch(action.type) {
-    case 'NEW_WEATHER_DATA': 
+    case NEW_WEATHER_DATA: 
       return {
         ...state, data: action.payload
       }
@@ -84,17 +82,13 @@ function weatherDataReducer(state=initialDataState, action) {
   }
 }
 
-
-
-
-
 const initialTimeValue = {
   time: 'local time'
 }
 
 function setTimeReducer(state=initialTimeValue, action) {
   switch(action.type) {
-    case 'NEW_LOCAL_TIME':
+    case NEW_LOCAL_TIME:
       return {
         ...state, time: action.payload
       }

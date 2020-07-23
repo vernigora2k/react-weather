@@ -1,36 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import './weather.scss'
-import { getWeather } from '../js/controller'
 import ForecastPlates from '../Forecast/ForecastPlates'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { timeSagas, newWeatherData, weatherSagas } from '../Redux/actions'
 
-function Weather({ searchFormValue, mainMenuActiveBtn, timeActions, newDataActions, weatherData, weatherActions }) {
+function Weather({ searchFormValue, mainMenuActiveBtn, weatherData, weatherActions }) {
     const [forecastInterval, setForecastInterval] = useState(7)
     const { temp, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad, weather: {description, icon} } = weatherData.data
 
     useEffect(() => {
-
         weatherActions(searchFormValue)
-
-        getWeather(searchFormValue)
-        .then(response => {
-            const data = response.data[0]
-            newDataActions(data)
-            timeActions(data.timezone)
-        })
-        .catch('errorHandler')
-
-        // getWeather(searchFormValue)
-        // .then(response => {
-        //     const data = response.data[0]
-        //     newDataActions(data)
-        //     timeActions(data.timezone)
-        // })
-        // .catch('errorHandler')
-
-
     }, [searchFormValue])
 
     function showBtnPressed(interval) {
