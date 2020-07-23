@@ -60,7 +60,18 @@ function favoriteNameReducer(state=initialStateFavoriteName, action) {
 
 //нужно изменить в везе.джес локал стейт на редакс, 
 //а потом уже можно пробовать переделывать на сагу аякс запрос по погоде
-const initialDataState = {}
+const initialDataState = {
+  data: {
+    temp: 18, 
+    pres: 900, 
+    sunrise: '12:00', 
+    sunset: '12:00', 
+    solar_rad: 233,
+    wind_cdir_full: "west-northwest", 
+    wind_spd: 2.57, 
+    weather: {icon: "c02n", code: "801", description: "Few clouds"}
+  }
+}
 
 function weatherDataReducer(state=initialDataState, action) {
   switch(action.type) {
