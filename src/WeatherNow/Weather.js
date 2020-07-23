@@ -11,6 +11,8 @@ function Weather({ searchFormValue, mainMenuActiveBtn, timeActions, newDataActio
     const { temp, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad, weather: {description, icon} } = weatherData.data
 
     useEffect(() => {
+        
+
         getWeather(searchFormValue)
         .then(response => {
             const data = response.data[0]
@@ -18,6 +20,8 @@ function Weather({ searchFormValue, mainMenuActiveBtn, timeActions, newDataActio
             timeActions(data.timezone)
         })
         .catch('errorHandler')
+
+
     }, [searchFormValue])
 
     function showBtnPressed(interval) {
