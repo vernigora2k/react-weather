@@ -23,6 +23,6 @@ export function* sagaWeatherWatcher() {
     yield takeEvery(NEW_SAGAS_WEATHER, sagaWeatherWorker)
 }
 
-function* sagaWeatherWorker() {
-    console.log('I am sagaWeatherWatcher ')  
+function* sagaWeatherWorker({payload: city}) {
+    console.log('I am sagaWeatherWatcher ' + city)  
 }

@@ -16,7 +16,8 @@ const store = createStore(rootReducer, compose(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ))
 
-saga.run(sagaTimeWatcher, sagaWeatherWatcher)
+saga.run(sagaTimeWatcher)
+saga.run(sagaWeatherWatcher)
 
 ReactDOM.render(
   <Provider store={store}>
