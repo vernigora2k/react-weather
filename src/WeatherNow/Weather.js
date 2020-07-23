@@ -4,14 +4,15 @@ import { getWeather } from '../js/controller'
 import ForecastPlates from '../Forecast/ForecastPlates'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { timeSagas, newWeatherData } from '../Redux/actions'
+import { timeSagas, newWeatherData, weatherSagas } from '../Redux/actions'
 
-function Weather({ searchFormValue, mainMenuActiveBtn, timeActions, newDataActions, weatherData }) {
+function Weather({ searchFormValue, mainMenuActiveBtn, timeActions, newDataActions, weatherData, weatherActions }) {
     const [forecastInterval, setForecastInterval] = useState(7)
     const { temp, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad, weather: {description, icon} } = weatherData.data
 
     useEffect(() => {
-        
+
+        weatherActions(searchFormValue)
 
         getWeather(searchFormValue)
         .then(response => {
@@ -20,6 +21,14 @@ function Weather({ searchFormValue, mainMenuActiveBtn, timeActions, newDataActio
             timeActions(data.timezone)
         })
         .catch('errorHandler')
+
+        // getWeather(searchFormValue)
+        // .then(response => {
+        //     const data = response.data[0]
+        //     newDataActions(data)
+        //     timeActions(data.timezone)
+        // })
+        // .catch('errorHandler')
 
 
     }, [searchFormValue])
@@ -148,7 +157,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => {
     return {
         timeActions: bindActionCreators(timeSagas, dispatch),
-        newDataActions: bindActionCreators(newWeatherData, dispatch)
+        newDataActions: bindActionCreators(newWeatherData, dispatch),
+        weatherActions: bindActionCreators(weatherSagas, dispatch)
     }
 }
 
