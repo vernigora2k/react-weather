@@ -7,7 +7,7 @@ import { timeSagas, newWeatherData, weatherSagas } from '../Redux/actions'
 
 function Weather({ searchFormValue, mainMenuActiveBtn, weatherData, weatherActions }) {
     const [forecastInterval, setForecastInterval] = useState(7)
-    const { temp, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad, weather: {description, icon} } = weatherData.data
+    const { temp, wind_cdir_full, wind_spd, pres, sunrise, sunset, solar_rad, weather: { description, icon } } = weatherData.data
 
     useEffect(() => {
         weatherActions(searchFormValue)
